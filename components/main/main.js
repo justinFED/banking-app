@@ -1,0 +1,66 @@
+const addUserButton = document.getElementById("add-user");
+const popup = document.getElementById("popup");
+const closePopup = document.getElementById("close");
+const userForm = document.getElementById("user-form");
+const userTableBody = document.getElementById("user-list");
+
+let userData = [];
+
+
+const savedUserData = localStorage.getItem("userData");
+if (savedUserData) {
+    userData = JSON.parse(savedUserData);
+    updateTable();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    addUserButton.addEventListener("click", () => {
+        popup.style.display = "flex";
+    });
+
+    closePopup.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    userForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone-input").value;
+        const cash = "$" + (document.getElementById("cash-input").value || "0");
+
+        userData.push({ username, email, phone, cash });
+
+        document.getElementById("username").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone-input").value = "";
+        document.getElementById("cash-input").value = "";
+
+        popup.style.display = "none";
+        localStorage.setItem("userData", JSON.stringify(userData));
+
+
+        updateTable();
+    });
+});
+
+function updateTable() {
+   
+    userTableBody.innerHTML = "";
+
+    userData.forEach((user, index) => {
+        const newRow = userTableBody.insertRow();
+        const nameCell = newRow.insertCell();
+        const emailCell = newRow.insertCell();
+        const phoneCell = newRow.insertCell();
+        const cashCell = newRow.insertCell();
+        const editCell = newRow.insertCell();
+
+        nameCell.innerHTML = `<div class="name"><h5>${user.username}</h5></div>`;
+        emailCell.textContent = user.email;
+        phoneCell.textContent = user.phone;
+        cashCell.textContent = user.cash;
+        editCell.innerHTML = `<a href="#">Edit Profile</a>`;
+    });
+}

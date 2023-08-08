@@ -14,12 +14,32 @@
             <h1>logo</h1>
         </div>
 
-        <div class="items">
+        <div class="items" id="items">
             <li>Transaction</li>
             <li>Deposit</li>
             <li>Withdraw</li>
             <li>Transfer</li>
+            <li id="add-user">Add User</li>
         </div>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close" id="close">&times;</span>
+                <h2>Add User</h2>
+                <form id="user-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone-input" name="phone">
+                    <label for="cash">Total Cash:</label>
+<input type="text" id="cash-input" name="cash" required>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </div> 
+
     </section>
 
 
@@ -89,209 +109,30 @@
                         <td></td>
                     </tr>
                 </thead>
-                <tbody>
+                
+                <tbody id="user-list">
                     <tr>
                         <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
+                            <div class="name" id="name">
+                                <h5></h5>
+                            </div>
                         </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
+                        <td class="email" id="email">
+                            <p></p>
                         </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
+                        <td class="phone" id="phone">
+                            <p></p>
                         </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
 
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
+                        <td class="cash" id="cash">
+                            <p></p>
                         </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
+                        <td class="edit"></td>
                     </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="people">
-                                <div class="people-de">
-                                    <h5>John Doe</h5>
-                                </div>
-                        </td>
-                        <td class="people-des">
-                            <p>john@sample.com</p>
-                        </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role">
-                            <p>$421,512</p>
-                        </td>
-                        <td class="edit"><a href="#">View Profile</a></td>
-                    </tr>
-
-                    
                 </tbody>
             </table>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ <script src="main.js"></script>
 </body>
 </html>
