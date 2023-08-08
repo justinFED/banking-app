@@ -3,14 +3,15 @@ const popup = document.getElementById("popup");
 const closePopup = document.getElementById("close");
 const userForm = document.getElementById("user-form");
 const userTableBody = document.getElementById("user-list");
+const totalUsersElement = document.getElementById("totalUsers");
 
 let userData = [];
-
 
 const savedUserData = localStorage.getItem("userData");
 if (savedUserData) {
     userData = JSON.parse(savedUserData);
     updateTable();
+    updateTotalUsersCount();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,13 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.style.display = "none";
         localStorage.setItem("userData", JSON.stringify(userData));
 
-
         updateTable();
+        updateTotalUsersCount();
     });
 });
 
 function updateTable() {
-   
     userTableBody.innerHTML = "";
 
     userData.forEach((user, index) => {
@@ -63,4 +63,8 @@ function updateTable() {
         cashCell.textContent = user.cash;
         editCell.innerHTML = `<a href="#">Edit Profile</a>`;
     });
+}
+
+function updateTotalUsersCount() {
+    totalUsersElement.textContent = userData.length;
 }
