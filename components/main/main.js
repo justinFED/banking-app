@@ -10,7 +10,7 @@ let userData = [];
 const savedUserData = localStorage.getItem("userData");
 if (savedUserData) {
     userData = JSON.parse(savedUserData);
-    updateTable();
+    updateTable(userData);
     updateTotalUsersCount();
 }
 
@@ -41,15 +41,27 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.style.display = "none";
         localStorage.setItem("userData", JSON.stringify(userData));
 
-        updateTable();
+        updateTable(userData);
         updateTotalUsersCount();
+    });
+
+    const searchInput = document.querySelector(".search input");
+    searchInput.addEventListener("input", () => {
+        const searchQuery = searchInput.value.toLowerCase();
+        const filteredData = userData.filter(user =>
+            user.username.toLowerCase().includes(searchQuery) ||
+            user.email.toLowerCase().includes(searchQuery) ||
+            user.phone.toLowerCase().includes(searchQuery)
+        );
+
+        updateTable(filteredData);
     });
 });
 
-function updateTable() {
+function updateTable(data) {
     userTableBody.innerHTML = "";
 
-    userData.forEach((user, index) => {
+    data.forEach((user, index) => {
         const newRow = userTableBody.insertRow();
         const nameCell = newRow.insertCell();
         const emailCell = newRow.insertCell();
