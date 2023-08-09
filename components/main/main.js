@@ -67,4 +67,12 @@ function updateTable() {
 
 function updateTotalUsersCount() {
     totalUsersElement.textContent = userData.length;
+
+    const totalCash = userData.reduce((total, user) => {
+        const cashValue = parseFloat(user.cash.replace('$', '').replace(',', '')) || 0;
+        return total + cashValue;
+    }, 0);
+
+    const totalCashElement = document.getElementById("totalCash");
+    totalCashElement.textContent = "$" + totalCash.toFixed(2);
 }
