@@ -214,6 +214,10 @@ tbody tr td {
     font-weight: 400;
 }
 
+#items li {
+    cursor: pointer;
+}
+
 .popup {
     display: none;
     position: fixed;
@@ -242,7 +246,4 @@ tbody tr td {
     cursor: pointer;
 }
 
-#items li {
-    cursor: pointer;
-}
 
