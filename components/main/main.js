@@ -31,6 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const phone = document.getElementById("phone-input").value;
         const cash = "$" + (document.getElementById("cash-input").value || "0");
 
+        const existingUser = addUser.find(user => user.email === email.toLowerCase());
+        if (existingUser) {
+            alert("User with this email already exists.");
+            return;
+        }
+
         addUser.push({ username, email, phone, cash });
 
         document.getElementById("username").value = "";
