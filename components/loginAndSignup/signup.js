@@ -11,6 +11,12 @@ signupForm.addEventListener('submit', (e) => {
     const name = fullNameInput.value;
     const email = emailInput.value;
     const number = numberInput.value;
+    const existingUserData = JSON.parse(localStorage.getItem('userData'));
+
+    if (existingUserData && existingUserData.email === email) {
+        alert('An account with this email already exists. Please log in.');
+        return;
+    }
 
     if(newPasswordInput.value !== retypePasswordInput.value) {
         alert('Passwords do not match. Please re-enter.');
