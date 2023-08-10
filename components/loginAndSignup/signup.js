@@ -18,6 +18,11 @@ signupForm.addEventListener('submit', (e) => {
         return;
     }
 
+    if (/^\d/.test(name)) {
+        alert('Name cannot start with a number.');
+        return;
+    }
+
     if(newPasswordInput.value !== retypePasswordInput.value) {
         alert('Passwords do not match. Please re-enter.');
         return;
