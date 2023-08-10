@@ -5,13 +5,13 @@ const userForm = document.getElementById("user-form");
 const userTableBody = document.getElementById("user-list");
 const totalUsersElement = document.getElementById("totalUsers");
 
-let userData = [];
+let addUser = [];
 
-const savedUserData = localStorage.getItem("userData");
-if (savedUserData) {
-    userData = JSON.parse(savedUserData);
-    updateTable(userData);
-    updateTotalUsersCount();
+const savedAddUser = localStorage.getItem("addUser");
+if (savedAddUser) {
+    addUser = JSON.parse(savedAddUser);
+    updateTable(addUser);
+    updateTotalUsersCount(addUser);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const phone = document.getElementById("phone-input").value;
         const cash = "$" + (document.getElementById("cash-input").value || "0");
 
-        userData.push({ username, email, phone, cash });
+        addUser.push({ username, email, phone, cash });
 
         document.getElementById("username").value = "";
         document.getElementById("email").value = "";
@@ -39,16 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("cash-input").value = "";
 
         popup.style.display = "none";
-        localStorage.setItem("userData", JSON.stringify(userData));
+        localStorage.setItem("addUser", JSON.stringify(addUser));
 
-        updateTable(userData);
-        updateTotalUsersCount();
+        updateTable(addUser);
+        updateTotalUsersCount(addUser);
     });
 
     const searchInput = document.querySelector(".search input");
     searchInput.addEventListener("input", () => {
         const searchQuery = searchInput.value.toLowerCase();
-        const filteredData = userData.filter(user =>
+        const filteredData = addUser.filter(user =>
             user.username.toLowerCase().includes(searchQuery) ||
             user.email.toLowerCase().includes(searchQuery) ||
             user.phone.toLowerCase().includes(searchQuery)
@@ -77,10 +77,10 @@ function updateTable(data) {
     });
 }
 
-function updateTotalUsersCount() {
-    totalUsersElement.textContent = userData.length;
+function updateTotalUsersCount(data) {
+    totalUsersElement.textContent = data.length;
 
-    const totalCash = userData.reduce((total, user) => {
+    const totalCash = data.reduce((total, user) => {
         const cashValue = parseFloat(user.cash.replace('$', '').replace(',', '')) || 0;
         return total + cashValue;
     }, 0);
