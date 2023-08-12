@@ -39,4 +39,5 @@ signupForm.addEventListener('submit', (e) => {
 
     alert('Account created successfully!');
     signupForm.reset();
+    window.location.href = '../main/main.html'
 });

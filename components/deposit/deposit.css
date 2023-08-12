@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --blue: #0070ba;
+    --white: whitesmoke;
+    --grey: grey;
+    --lightblue: #0387df;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.modal {
+    position: fixed;
+    top: 100px;
+    border-style: none;
+    width: 500px;
+    height: 300px;
+    background-color: var(--lightblue);
+    border-radius: 10px;
+}

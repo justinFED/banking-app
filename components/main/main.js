@@ -4,6 +4,8 @@ const closePopup = document.getElementById("close");
 const userForm = document.getElementById("user-form");
 const userTableBody = document.getElementById("user-list");
 const totalUsersElement = document.getElementById("totalUsers");
+const depositBtn = document.getElementById('deposit');
+const modalContainer = document.querySelector('.modal-container');
 
 let addUser = [];
 
@@ -62,6 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateTable(filteredData);
     });
+
+    depositBtn.addEventListener('click', openModal);
+
+    function openModal() {
+        modalContainer.innerHTML = '';
+        modalContainer.innerHTML = '<iframe class="iframe" src="../deposit/deposit.html"></iframe>';
+    }
 });
 
 function updateTable(data) {

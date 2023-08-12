@@ -246,4 +246,14 @@ tbody tr td {
     cursor: pointer;
 }
 
+.modal-container {
+    position: absolute;
+}
+
+.iframe {
+    border: none;
+    width: 500px;
+    height: 400px;
+}
+
 
