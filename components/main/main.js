@@ -82,13 +82,24 @@ function updateTable(data) {
         const emailCell = newRow.insertCell();
         const phoneCell = newRow.insertCell();
         const cashCell = newRow.insertCell();
-        const editCell = newRow.insertCell();
+        const deleteCell = newRow.insertCell();
 
         nameCell.innerHTML = `<div class="name"><h5>${user.username}</h5></div>`;
         emailCell.textContent = user.email;
         phoneCell.textContent = user.phone;
         cashCell.textContent = user.cash;
-        editCell.innerHTML = `<a href="#">Edit Profile</a>`;
+
+        const trashBinIcon = document.createElement("i");
+        trashBinIcon.className = "fas fa-trash-alt delete-icon";
+        deleteCell.appendChild(trashBinIcon);
+
+       
+        trashBinIcon.addEventListener("click", () => {
+            addUser.splice(index, 1);
+            updateTable(addUser);
+            updateTotalUsersCount(addUser);
+            localStorage.setItem("addUser", JSON.stringify(addUser));
+        });
     });
 }
 
