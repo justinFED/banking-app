@@ -17,8 +17,6 @@ body {
     
 }
 
-
-
 #menu {
     background: var(--blue);
     width: 300px;
@@ -37,7 +35,11 @@ body {
 
 #menu .items {
     margin-top: 40px;
-    
+}
+
+#menu .items a {
+    text-decoration: none;
+    color: black;
 }
 
 #menu .items li {
