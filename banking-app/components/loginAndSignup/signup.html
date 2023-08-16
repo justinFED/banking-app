@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <a href="/index.html">
+            J&K Bank
+        </a>
+        <a href="./login.html">
+            <button id="login-btn">Log In</button>
+        </a>
+    </nav>
+    <div id="signup-container">
+    <form id="signup-form">
+    <div class="input-container">
+        <input id="full-name" type="text" placeholder="" required="required">
+        <label for="Full Name">Full Name</label>
+    </div>
+    <div class="input-container">
+        <input id="email" type="email" placeholder="" required="required">
+        <label for="email">Email Address</label>
+    </div>
+    <div class="input-container">
+        <input id="number" type="tel" pattern="[0-9]{10}" placeholder="" required="required">
+        <label for="Phone Number">Phone Number (10 digits)</label>
+    </div>
+    <div class="input-container">
+        <input id="new-password" type="password" placeholder="" required="required">
+        <label for="New Password">New Password</label>
+    </div>
+    <div class="input-container">
+        <input id="retype-password" type="password" placeholder="" required="required">
+        <label for="Retype Password">Retype Password</label>
+    </div>
+    <button type="submit" id="signup-btn">Sign Up</button>
+    </form>
+    </div>
+<script src="signup.js"></script>
+</body>
+</html>
