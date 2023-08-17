@@ -4,8 +4,8 @@ const closePopup = document.getElementById("close");
 const userForm = document.getElementById("user-form");
 const userTableBody = document.getElementById("user-list");
 const totalUsersElement = document.getElementById("totalUsers");
-const depositBtn = document.getElementById('deposit');
-const modalContainer = document.querySelector('.modal-container');
+
+const userCash = document.getElementById('cash')
 
 let addUser = [];
 
@@ -64,13 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateTable(filteredData);
     });
-
-    depositBtn.addEventListener('click', openModal);
-
-    function openModal() {
-        modalContainer.innerHTML = '';
-        modalContainer.innerHTML = '<iframe class="iframe" src="../deposit/deposit.html"></iframe>';
-    }
 });
 
 function updateTable(data) {
@@ -84,7 +77,7 @@ function updateTable(data) {
         const cashCell = newRow.insertCell();
         const deleteCell = newRow.insertCell();
 
-        nameCell.innerHTML = `<div class="name"><h5>${user.username}</h5></div>`;
+        nameCell.innerHTML = `<div class="name"><button class="user-btn">${user.username}</button></div>`;
         emailCell.textContent = user.email;
         phoneCell.textContent = user.phone;
         cashCell.textContent = user.cash;
@@ -114,3 +107,5 @@ function updateTotalUsersCount(data) {
     const totalCashElement = document.getElementById("totalCash");
     totalCashElement.textContent = "$" + totalCash.toFixed(2);
 }
+
+

@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userForm = document.getElementById("user-form");
     const userTableBody = document.getElementById("user-list");
     const totalUsersElement = document.getElementById("totalUsers");
-    const depositBtn = document.getElementById('deposit');
-    const modalContainer = document.querySelector('.modal-container');
+
 
     let addUser = [];
 
@@ -129,4 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function setTransactionData(data) {
         localStorage.setItem('transactionData', JSON.stringify(data));
     }
+
+
+
 });

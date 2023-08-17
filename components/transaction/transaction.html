@@ -17,7 +17,11 @@
 
         <div class="items" id="items">
             <li>Transaction</li>
-            <li id="deposit">Deposit</li>
+            <li id="deposit-btn">Deposit</li>
+            <dialog id="deposit-modal">
+                deposit
+                <button id="deposit-close">Close</button>
+            </dialog>
             <li>Withdraw</li>
             <li>Transfer</li>
         </div>
@@ -81,9 +85,6 @@
         </div>
     </section>
 
-
-
-
-
-<script src="../transaction/transaction.js"></script>
+<script src="transaction.js"></script>
+<script src="deposit.js"></script>
 </body>

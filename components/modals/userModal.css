@@ -1,0 +1,10 @@
+dialog {
+    width: 80%;
+    padding: 30px;
+    max-width: 400px;
+    margin: 0 auto;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
