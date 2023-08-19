@@ -18,7 +18,7 @@ withdrawConfirmBtn.addEventListener('click', () => {
     const balance = Number(currentBalance.replace(/\D/g, ""));
 
     if (!isNaN(amount) && amount <= balance) {
-        currentBalance = amount - balance
+        currentBalance = balance - amount
         console.log(currentBalance)
         withdrawModal.close();
     } else {
