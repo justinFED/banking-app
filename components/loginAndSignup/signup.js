@@ -4,6 +4,10 @@ const emailInput = document.getElementById('email');
 const numberInput = document.getElementById('number');
 const newPasswordInput = document.getElementById('new-password');
 const retypePasswordInput = document.getElementById('retype-password');
+const togglePassword = document.querySelector('.fa-regular')
+
+let isToggling = false;
+let timeoutId;
 
 signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -41,3 +45,26 @@ signupForm.addEventListener('submit', (e) => {
     signupForm.reset();
     window.location.href = '../main/main.html'
 });
+
+function togglePasswordVisibility(inputElement) {
+    if (inputElement.type === 'password') {
+        inputElement.type = 'text'
+    } else {
+        inputElement.type = 'password'
+    }
+}
+
+togglePassword.addEventListener('mousedown', () => {
+    isToggling = true;
+    timeoutId = setTimeout(() => {
+        if (isToggling) {
+            togglePasswordVisibility(newPasswordInput);
+            togglePasswordVisibility(retypePasswordInput)
+        }
+    }, 10)
+})
+
+togglePassword.addEventListener('mouseup', () => {
+    togglePasswordVisibility(newPasswordInput)
+    togglePasswordVisibility(retypePasswordInput)
+})

@@ -64,6 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateTable(filteredData);
     });
+
+    document.addEventListener('updateTableEvent', () => {
+        updateTable(addUser);
+    })
 });
 
 function updateTable(data) {
@@ -107,5 +111,3 @@ function updateTotalUsersCount(data) {
     const totalCashElement = document.getElementById("totalCash");
     totalCashElement.textContent = "$" + totalCash.toFixed(2);
 }
-
-

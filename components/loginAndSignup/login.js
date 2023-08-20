@@ -2,6 +2,10 @@ const storedUserData = JSON.parse(localStorage.getItem('userData'));
 const loginForm = document.getElementById('login-form');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
+const togglePassword = document.querySelector('.fa-regular')
+
+let isToggling = false;
+let timeoutId;
 
 if (storedUserData) {
     loginForm.addEventListener('submit', (e) => {
@@ -17,3 +21,24 @@ if (storedUserData) {
         }
     });
 }
+
+function togglePasswordVisibility() {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text'
+    } else {
+        passwordInput.type = 'password'
+    }
+}
+
+togglePassword.addEventListener('mousedown', () => {
+    isToggling = true;
+    timeoutId = setTimeout(() => {
+        if (isToggling) {
+            togglePasswordVisibility();
+        }
+    }, 10)
+})
+
+togglePassword.addEventListener('mouseup', () => {
+    togglePasswordVisibility()
+})

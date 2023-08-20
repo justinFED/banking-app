@@ -4,6 +4,7 @@ const depositInput = document.getElementById('deposit-input');
 const depositConfirmBtn = document.getElementById('deposit-confirm-btn');
 const depositClose = document.getElementById('deposit-close-btn');
 
+const updateTableEvent = new Event('updateTableEvent')
 
 depositBtn.addEventListener('click', () => {
     userOptionsModal.close();
@@ -20,6 +21,9 @@ depositConfirmBtn.addEventListener('click', () => {
     if (!isNaN(amount) && amount > 0) {
         currentBalance = amount + balance
         console.log(currentBalance)
+
+        document.dispatchEvent(updateTableEvent)
+
         depositModal.close();
     } else {
         alert('Please enter a valid amount to deposit.')

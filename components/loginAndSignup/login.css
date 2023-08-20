@@ -12,6 +12,10 @@
     --lightblue: #0387df;
 }
 
+body {
+    background-color: var(--lightblue);
+}
+
 body, #main-container, #login-form {
     display: flex;
     justify-content: center;
@@ -50,8 +54,8 @@ input:focus {
 
 input:not(:placeholder-shown) ~ label,
 input:focus ~ label {
-    transform: translateX(10px) translateY(-7px);
-    font-size: 0.65em;
+    transform: translateX(1px) translateY(-10px);
+    font-size: 0.50em;
 }
 
 .input-container {
@@ -76,6 +80,7 @@ label {
     border: 1px solid rgb(225, 225, 225);
     border-radius: 10px;
     gap: 30px;
+    background-color: var(--white);
 }
 
 button {
@@ -103,11 +108,19 @@ button {
 }
 
 #signup-btn:hover {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(220, 220, 220);
     transition: 0.3s ease;
 }
 
 #question {
     font-size: 0.8rem;
     color: var(--grey);
+}
+
+.fa-eye {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    color: var(--grey);
+    cursor: pointer;
 }

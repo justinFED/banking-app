@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/570d026863.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav>
@@ -33,12 +34,13 @@
         <label for="Phone Number">Phone Number (10 digits)</label>
     </div>
     <div class="input-container">
-        <input id="new-password" type="password" placeholder="" required="required">
+        <input class="password-input" id="new-password" type="password" placeholder="" required="required">
         <label for="New Password">New Password</label>
     </div>
     <div class="input-container">
-        <input id="retype-password" type="password" placeholder="" required="required">
+        <input class="password-input" id="retype-password" type="password" placeholder="" required="required">
         <label for="Retype Password">Retype Password</label>
+        <i class="fa-regular fa-eye"></i>
     </div>
     <button type="submit" id="signup-btn">Sign Up</button>
     </form>
