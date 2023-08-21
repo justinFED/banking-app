@@ -5,8 +5,6 @@ const userForm = document.getElementById("user-form");
 const userTableBody = document.getElementById("user-list");
 const totalUsersElement = document.getElementById("totalUsers");
 
-const userCash = document.getElementById('cash')
-
 let addUser = [];
 
 const savedAddUser = localStorage.getItem("addUser");
@@ -90,7 +88,6 @@ function updateTable(data) {
         trashBinIcon.className = "fas fa-trash-alt delete-icon";
         deleteCell.appendChild(trashBinIcon);
 
-       
         trashBinIcon.addEventListener("click", () => {
             addUser.splice(index, 1);
             updateTable(addUser);
@@ -111,3 +108,41 @@ function updateTotalUsersCount(data) {
     const totalCashElement = document.getElementById("totalCash");
     totalCashElement.textContent = "$" + totalCash.toFixed(2);
 }
+
+const depositModal = document.getElementById('deposit-modal');
+const depositBtn = document.getElementById('deposit-btn');
+const depositInput = document.getElementById('deposit-input');
+const depositConfirmBtn = document.getElementById('deposit-confirm-btn');
+const depositClose = document.getElementById('deposit-close-btn');
+
+const updateTableEvent = new Event('updateTableEvent')
+
+depositBtn.addEventListener('click', () => {
+    userOptionsModal.close();
+    depositModal.showModal();
+    console.log('selecteduser:', selectedUser)
+    
+})
+
+depositConfirmBtn.addEventListener('click', () => {
+    const amount = parseFloat(depositInput.value);
+    let currentBalance = selectedUser.cash;
+    const balance = parseFloat(currentBalance.replace('$', '').replace(',', '')); // Convert to a numeric value
+    
+    if (!isNaN(amount) && amount > 0) {
+        const newBalance = balance + amount; 
+        selectedUser.cash = "$" + newBalance.toFixed(2); 
+
+        localStorage.setItem("addUser", JSON.stringify(addUser)); 
+        updateTable(addUser); 
+        updateTotalUsersCount(addUser);
+
+        depositModal.close();
+    } else {
+        alert('Please enter a valid amount to deposit.');
+    }
+});
+
+depositClose.addEventListener('click', () => {
+    depositModal.close();
+});

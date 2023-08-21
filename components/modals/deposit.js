@@ -16,13 +16,15 @@ depositBtn.addEventListener('click', () => {
 depositConfirmBtn.addEventListener('click', () => {
     const amount = parseFloat(depositInput.value);
     let currentBalance = selectedUser.cash
-    const balance = Number(currentBalance.replace(/\D/g, ""));
+    const balance = parseFloat(currentBalance.replace('$', '').replace(',', ''));
     
     if (!isNaN(amount) && amount > 0) {
-        currentBalance = amount + balance
+        const newBalance = balance + amount; // Eto nag cacalculate ng cash kaya + plus sign nakalagay kse add cash
+        selectedUser.cash = "$" + newBalance.toFixed(2); // Eto nag uupdate ng cash property
         console.log(currentBalance)
 
-        document.dispatchEvent(updateTableEvent)
+        localStorage.setItem("addUser", JSON.stringify(addUser)); // Eto nag uupdate sa localstorage
+        updateTable(addUser);
 
         depositModal.close();
     } else {
