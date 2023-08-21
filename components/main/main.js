@@ -115,19 +115,15 @@ const depositInput = document.getElementById('deposit-input');
 const depositConfirmBtn = document.getElementById('deposit-confirm-btn');
 const depositClose = document.getElementById('deposit-close-btn');
 
-const updateTableEvent = new Event('updateTableEvent')
-
 depositBtn.addEventListener('click', () => {
     userOptionsModal.close();
     depositModal.showModal();
-    console.log('selecteduser:', selectedUser)
-    
-})
+});
 
 depositConfirmBtn.addEventListener('click', () => {
     const amount = parseFloat(depositInput.value);
     let currentBalance = selectedUser.cash;
-    const balance = parseFloat(currentBalance.replace('$', '').replace(',', '')); // Convert to a numeric value
+    const balance = parseFloat(currentBalance.replace('$', '').replace(',', ''));
     
     if (!isNaN(amount) && amount > 0) {
         const newBalance = balance + amount; 
@@ -145,4 +141,16 @@ depositConfirmBtn.addEventListener('click', () => {
 
 depositClose.addEventListener('click', () => {
     depositModal.close();
+});
+
+const transferModal = document.getElementById('transfer-modal');
+const transferBtn = document.getElementById('transfer-btn');
+const transferRecipientInput = document.getElementById('transfer-recipient');
+const transferAmountInput = document.getElementById('transfer-amount');
+const transferConfirmBtn = document.getElementById('transfer-confirm-btn');
+const transferCloseBtn = document.getElementById('transfer-close-btn');
+
+transferBtn.addEventListener('click', () => {
+    userOptionsModal.close();
+    transferModal.showModal();
 });
