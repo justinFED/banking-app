@@ -1,3 +1,15 @@
+const transferModal = document.getElementById('transfer-modal');
+const transferBtn = document.getElementById('transfer-btn');
+const transferRecipientInput = document.getElementById('transfer-recipient');
+const transferAmountInput = document.getElementById('transfer-amount');
+const transferConfirmBtn = document.getElementById('transfer-confirm-btn');
+const transferCloseBtn = document.getElementById('transfer-close-btn');
+
+transferBtn.addEventListener('click', () => {
+    userOptionsModal.close();
+    transferModal.showModal();
+});
+
 transferConfirmBtn.addEventListener('click', () => {
     const recipientEmail = transferRecipientInput.value.toLowerCase();
     const amount = parseFloat(transferAmountInput.value);

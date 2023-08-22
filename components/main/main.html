@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/570d026863.js" crossorigin="anonymous"></script>
     <title>J&K Bank</title>
 </head>
 <body>
@@ -145,29 +146,38 @@
 
 
     <dialog id="user-options-modal">
-        <button id="user-options-close">close</button>
+        <button id="user-options-close" class="close-btn">X</button>
+        <i class="fa-solid fa-money-bill-transfer fa-lg"></i>
         <button class="user-options-btn" id="deposit-btn">Deposit</button>
         <button class="user-options-btn" id="withdraw-btn">Withdraw</button>
         <button class="user-options-btn" id="transfer-btn">Transfer</button>
     </dialog>
 
     <dialog id="deposit-modal">
-        <button id="deposit-close-btn">close</button>
-        <input type="text" id="deposit-input" placeholder="Enter amount">
-        <button id="deposit-confirm-btn">Confirm Deposit</button>
+        <button id="deposit-close-btn" class="close-btn">X</button>
+        <input class="input" type="text" id="deposit-input" placeholder="">
+        <span class="dw-placeholder">Enter amount</span>
+        <button class="user-options-btn" id="deposit-confirm-btn">Confirm Deposit</button>
     </dialog>
 
     <dialog id="withdraw-modal">
-        <button id="withdraw-close-btn">close</button>
-        <input type="text" id="withdraw-input" placeholder="Enter amount">
-        <button id="withdraw-confirm-btn">Confirm Withdraw</button>
+        <button id="withdraw-close-btn" class="close-btn">X</button>
+        <input class="input" type="text" id="withdraw-input" placeholder="">
+        <span class="dw-placeholder">Enter amount</span>
+        <button class="user-options-btn" id="withdraw-confirm-btn">Confirm Withdraw</button>
     </dialog>
 
     <dialog id="transfer-modal">
-        <button id="transfer-close-btn">Close</button>
-        <input type="text" id="transfer-recipient" placeholder="Recipient email">
-        <input type="text" id="transfer-amount" placeholder="Amount to transfer">
-        <button id="transfer-confirm-btn">Confirm Transfer</button>
+        <button id="transfer-close-btn" class="close-btn">X</button>
+        <div class="transfer-container">
+        <input class="input" type="text" id="transfer-recipient" placeholder="">
+        <span class="transfer-placeholder">Recipient's email</span>
+        </div>
+        <div class="transfer-container">
+        <input class="input" type="text" id="transfer-amount" placeholder="">
+        <span class="transfer-placeholder">Enter amount</span>
+        </div>
+        <button class="user-options-btn" id="transfer-confirm-btn">Confirm Transfer</button>
     </dialog>
 
 
