@@ -13,7 +13,7 @@
 }
 
 dialog::backdrop {
-    background:hsla(207, 100%, 20%, 0.25);
+    background:hsla(207, 100%, 29%, 0.60);
 }
 
 :modal {
@@ -44,9 +44,10 @@ dialog::backdrop {
     color: var(--grey);
     transition: 0.2s ease;
     font-weight: 800;
+    font-size: 20px;
 }
 
-.user-options-btn:hover {
+.yes-no-btn:hover, .user-options-btn:hover {
     border-color: var(--lightblue);
     background-color: var(--lightblue);
     color: whitesmoke;
@@ -60,7 +61,7 @@ dialog::backdrop {
     border: none;
     color: var(--grey);
     background-color: whitesmoke;
-    font-size: larger;
+    font-size: 10px;
     width: 30px;
     height: 30px;
     background-color: whitesmoke;
@@ -70,7 +71,7 @@ dialog::backdrop {
 
 .close-btn:hover {
     color: whitesmoke;
-    background-color: var(--grey);
+    background-color: var(--blue);
     border-radius: 50%;
 }
 
@@ -112,8 +113,8 @@ input:focus {
 
 input:not(:placeholder-shown) ~ .dw-placeholder,
 input:focus ~ .dw-placeholder {
-    transform: translateX(6px) translateY(-35px);
-    font-size: 0.50em;
+    transform: translateX(11px) translateY(-35px);
+    font-size: 0.70em;
 }
 
 .transfer-container {
@@ -127,8 +128,8 @@ input:focus ~ .dw-placeholder {
 
 input:not(:placeholder-shown) ~ .transfer-placeholder,
 input:focus ~ .transfer-placeholder {
-    transform: translateX(6px) translateY(-35px);
-    font-size: 0.50em;
+    transform: translateX(11px) translateY(-35px);
+    font-size: 0.70em;
 }
 
 .fa-solid {
@@ -138,4 +139,19 @@ input:focus ~ .transfer-placeholder {
 .fa-money-bill-transfer {
     top: 40px;
     color: var(--blue);
+}
+
+.yes-no {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.yes-no-btn {
+    cursor: pointer;
+    width: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s ease;
 }

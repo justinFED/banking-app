@@ -4,6 +4,12 @@ const transferRecipientInput = document.getElementById('transfer-recipient');
 const transferAmountInput = document.getElementById('transfer-amount');
 const transferConfirmBtn = document.getElementById('transfer-confirm-btn');
 const transferCloseBtn = document.getElementById('transfer-close-btn');
+const transferCheckModal = document.getElementById('transfer-check-modal')
+const transferYes = document.getElementById('yes-transfer')
+const transferNo = document.getElementById('no-transfer')
+const transferAmount = document.getElementById('transfer-amount');
+const transferEmail = document.getElementById('transfer-email')
+const recipientEmail = document.getElementById('recipient-email')
 
 transferBtn.addEventListener('click', () => {
     userOptionsModal.close();
@@ -40,18 +46,28 @@ transferConfirmBtn.addEventListener('click', () => {
         return;
     }
 
+    transferAmount.innerHTML = `$${transferAmountInput.value}`
+    transferEmail.innerHTML = selectedUser.email
+    recipientEmail.innerHTML = transferRecipientInput.value
+    transferCheckModal.showModal();
     const newSenderBalance = senderBalance - amount;
     const newRecipientBalance = recipientBalance + amount;
 
     selectedUser.cash = '$' + newSenderBalance.toFixed(2);
     addUser[recipientIndex].cash = '$' + newRecipientBalance.toFixed(2);
+    transferModal.close();
+});
 
+transferYes.addEventListener('click', () => {
     localStorage.setItem('addUser', JSON.stringify(addUser));
     updateTable(addUser);
     updateTotalUsersCount(addUser);
+    transferCheckModal.close()
+})
 
-    transferModal.close();
-});
+transferNo.addEventListener('click', () => {
+    transferCheckModal.close()
+})
 
 transferCloseBtn.addEventListener('click', () => {
     transferModal.close();
