@@ -30,13 +30,23 @@ body {
 #menu .logo {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
     color: white;
-    padding: 30px 0 0 30px;
+    padding-top: 30px;
+}
+
+#menu .logo img {
+    height: 100px;
+    width: 100px;
+
 }
 
 #menu .items {
     margin-top: 40px;
     margin-right: 15px;
+    position: relative;
 }
 
 #menu .items a {
@@ -56,9 +66,20 @@ body {
 
 }
 
-#menu .items .logout-btn {
-    margin-top: 500px;
+#menu  .logout-btn {
+    margin: 25px;
+    width: 240px;
+    text-align: center;
+    background-color: #d7dbe6;
+    list-style: none;
+    padding: 6px 0;
+    border-radius: 10px;
+    border: 5px solid #d7dbe6; 
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
 }
+
 
 
 #interface {
