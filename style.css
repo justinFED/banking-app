@@ -16,6 +16,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+body {
+    background-color: whitesmoke;
+}
+
 html {
     font-size: 62.5%;
     overflow-x: hidden;
@@ -32,7 +36,6 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: white;
     padding: 2rem 9%;
     display: flex;
     justify-content: space-between;
@@ -54,11 +57,15 @@ header h1 {
 }
 
 .loginButton {
-    color: var(--blue);
+    color: var(--grey);
     font-size: 15px;
     background: none;
     box-shadow: none;
     cursor: pointer;
+}
+
+.loginButton:hover {
+    color: var(--blue)
 }
 
 
@@ -72,6 +79,7 @@ header h1 {
 
 .signupButton:hover {
     background-color: var(--lightblue);
+    color: var(--white);
 }
 
 #tagline, #simple {
@@ -80,7 +88,7 @@ header h1 {
 
 #tagline {
     position: absolute;
-    top: 300px;
+    top: 250px;
     left: 150px;
 }
 
@@ -94,4 +102,11 @@ header h1 {
     width: 900px;
     top: 80px;
     left: 600px;
+}
+
+#description {
+    font-size: 20px;
+    width: 50ch;
+    margin-top: 30px;
+    color: var(--grey);
 }
