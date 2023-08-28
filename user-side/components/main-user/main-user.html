@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main-user.css">
+    <link rel="stylesheet" href="/components/modals/userModal.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/570d026863.js" crossorigin="anonymous"></script>
+    <title>J&K Bank</title>
+</head>
+<body>
+ 
+    <section id="menu">
+        <div class="logo">
+            <img src="avatar.png" alt="profile">
+            <h1>Welcome back!</h1>
+        </div>
+
+        <div class="items" id="items">
+            <a href="../transaction/transaction.html"><li>Transaction</li></a>
+            <li id="add-user">Add User</li>
+            <a href="../card/card.html"><li class="card">Create Virtual Card</li></a>
+            
+        </div>
+
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+ 
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close" id="close">&times;</span>
+                <h2>Add User</h2>
+                <form id="user-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone-input" name="phone">
+                    <label for="cash">Total Cash:</label>
+<input type="text" id="cash-input" name="cash" required>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        </div> 
+
+    </section>
+
+
+    <section id="interface">
+        <div class="navigation">
+            <div class="n1">
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+
+            <div class="profile">
+                <i class="far fa-bell"></i>
+                <h1>Admin</h1>
+            </div>
+        </div>
+
+        <h3 class="i-name">
+            Dashboard
+        </h3>
+
+        <div class="values">
+            <div class="val-box">
+                <i class="fas fa-users"></i>
+                <div>
+                    <h3 id="totalUsers">0</h3>
+                    <span>Total Users</span>
+                </div>
+            </div>
+            
+
+   
+            <div class="val-box">
+                <i class="fas fa-money-bill-wave"></i>
+                <div>
+                    <h3 id="totalCash">$0</h3>
+                    <span>Total Cash</span>
+                </div>
+            </div>
+
+
+            <div class="val-box">
+                <i class="fas fa-users"></i>
+                <div>
+                    <h3>2,132</h3>
+                    <span>Total Withdraw</span>
+                </div>
+            </div>
+
+            <div class="val-box">
+                <i class="fas fa-users"></i>
+                <div>
+                    <h3>2,142</h3>
+                    <span>Total Transfer</span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="board">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Phone Number</td>
+                        <td>Total Cash</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                
+                <tbody id="user-list">
+                    <tr>
+                        <td class="people">
+                            <div class="name" id="name">
+                                <h5></h5>
+                            </div>
+                        </td>
+                        <td class="email" id="email">
+                            <p></p>
+                        </td>
+                        <td class="phone" id="phone">
+                            <p></p>
+                        </td>
+
+                        <td class="cash" id="cash">
+                            <p></p>
+                        </td>
+                        <td class="edit"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+    <dialog id="user-options-modal">
+        <button id="user-options-close" class="close-btn">X</button>
+        <i class="fa-solid fa-money-bill-transfer fa-lg"></i>
+        <button class="user-options-btn" id="deposit-btn">Deposit</button>
+        <button class="user-options-btn" id="withdraw-btn">Withdraw</button>
+        <button class="user-options-btn" id="transfer-btn">Transfer</button>
+    </dialog>
+
+    <dialog id="deposit-modal">
+        <button id="deposit-close-btn" class="close-btn">X</button>
+        <input class="input" type="text" id="deposit-input" placeholder="">
+        <span class="dw-placeholder">Enter amount</span>
+        <button class="user-options-btn" id="deposit-confirm-btn">Confirm Deposit</button>
+    </dialog>
+
+    <dialog id="confirm-deposit-modal">
+        <p>You are about to deposit <span id="deposit-amount" style="font-weight: bold;"></span><br> to account <span id="deposit-email" style="font-weight: bold;"></span>.</p>
+        <p>Click YES if you're sure.</p>
+
+        <div id="yes-no">
+        <button class="yes-no-btn" id="yes-deposit">YES</button>
+        <button class="yes-no-btn" id="no-deposit">NO</button>
+        </div>
+        
+    </dialog>
+
+    <dialog id="withdraw-modal">
+        <button id="withdraw-close-btn" class="close-btn">X</button>
+        <input class="input" type="text" id="withdraw-input" placeholder="">
+        <span class="dw-placeholder">Enter amount</span>
+        <button class="user-options-btn" id="withdraw-confirm-btn">Confirm Withdraw</button>
+    </dialog>
+
+    <dialog id="confirm-withdraw-modal">
+        <p>You are about to withdraw <span id="withdraw-amount" style="font-weight: bold;"></span><br> from account <span id="withdraw-email" style="font-weight: bold;"></span>.</p>
+        <p>Click YES if you're sure.</p>
+        
+        <div id="yes-no">
+        <button class="yes-no-btn" id="yes-withdraw">YES</button>
+        <button class="yes-no-btn" id="no-withdraw">NO</button>
+        </div>
+    </dialog>
+
+    <dialog id="transfer-modal">
+        <button id="transfer-close-btn" class="close-btn">X</button>
+        <div class="transfer-container">
+        <input class="input" type="text" id="transfer-recipient" placeholder="">
+        <span class="transfer-placeholder">Recipient's email</span>
+        </div>
+        <div class="transfer-container">
+        <input class="input" type="text" id="transfer-amount" placeholder="">
+        <span class="transfer-placeholder">Enter amount</span>
+        </div>
+        <button class="user-options-btn" id="transfer-confirm-btn">Confirm Transfer</button>
+    </dialog>
+
+    <dialog id="transfer-check-modal">
+        <p>You are about to transfer <span id="transfer-amount" style="font-weight: bold;"></span><br> from account <span id="transfer-email" style="font-weight: bold;"></span><br> to <span id="recipient-email" style="font-weight: bold;"></span>.</p>
+        <p>Click YES if you're sure.</p>
+        
+        <div id="yes-no">
+        <button class="yes-no-btn" id="yes-transfer">YES</button>
+        <button class="yes-no-btn" id="no-transfer">NO</button>
+        </div>
+    </dialog>
+
+
+
+ <script src="main.js"></script>
+ <script src="../modals/userModal.js"></script>
+ <script src="../modals/deposit.js"></script>
+ <script src="../modals/withdraw.js"></script>
+ <script src="../modals/transfer.js"></script>
+</body>
+</html>

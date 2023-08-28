@@ -1,0 +1,112 @@
+:root {
+    --blue: #0070ba;
+    --white: whitesmoke;
+    --grey: grey;
+    --lightblue: #0387df;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth
+}
+
+section {
+    padding: 2rem 9%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 2rem 9%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+.nav-button {
+    display: flex;
+    gap: 40px;
+}
+
+.loginButton, .signupButton {
+    width: 100px;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.loginButton {
+    color: var(--grey);
+    font-size: 15px;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.loginButton:hover {
+    color: var(--blue)
+}
+
+
+.signupButton {
+    color: var(--white);
+    background-color: var(--blue);
+    font-size: 15px;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.signupButton:hover {
+    background-color: var(--lightblue);
+    color: var(--white);
+}
+
+#tagline, #simple {
+    font-size: 50px;
+}
+
+#tagline {
+    position: absolute;
+    top: 250px;
+    left: 150px;
+}
+
+#simple {
+    font-weight: 900;
+    color: black;
+}
+
+#cover-image {
+    position: absolute;
+    width: 900px;
+    top: 80px;
+    left: 600px;
+}
+
+#description {
+    font-size: 20px;
+    width: 50ch;
+    margin-top: 30px;
+    color: var(--grey);
+}
