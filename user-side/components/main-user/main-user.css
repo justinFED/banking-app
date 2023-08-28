@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
+    
 }
 
 body {
@@ -15,7 +16,7 @@ body {
     background: var(--white);
     position: relative;
     display: flex;
-    
+    background: #f5f7fa;
 }
 
 #menu {
@@ -140,3 +141,84 @@ body {
     font-size: 24px;
     font-weight: 700;
 }
+
+
+#main-dasboard {
+    position: absolute;
+    padding: 2rem 9%;
+}
+
+.container-balance {
+    position: relative;
+    background: white;
+    height: 250px;
+    width: 550px;
+    left: 300px;
+    top: 150px;
+    border-radius: 0.75rem;
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.container-balance .balance {
+    display: flex;
+    justify-content: start;
+    
+}
+
+.container-balance .balance h1 {
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+.container-balance .balance h2 {
+    padding-top: 25px;
+    font-size: 3.17em;
+    font-weight: 400;
+}
+
+.container-balance p {
+    padding-top: 5px;
+}
+
+.container-balance button {
+    margin-top: 1.5rem;
+    background: #003087;
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 0.25rem 0.875rem;
+    color: white;
+    text-align: center;
+    border-radius: 1000px;
+
+}
+
+
+.container-transaction {
+    position: relative;
+    background: white;
+    height: 850px;
+    width: 550px;
+    left: 300px;
+    top: 150px;
+    border-radius: 0.75rem;
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-top: 30px;
+}
+
+.container-transaction h1 {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    color: #0c0c0d;
+}
+
+.box-transaction {
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    height: 100px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 0.75rem;
+}
+
