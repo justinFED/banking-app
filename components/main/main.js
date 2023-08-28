@@ -108,3 +108,7 @@ function updateTotalUsersCount(data) {
     const totalCashElement = document.getElementById("totalCash");
     totalCashElement.textContent = "$" + totalCash.toFixed(2);
 }
+
+function logout() {
+    window.location.href = 'http://127.0.0.1:5501/index.html';
+}
