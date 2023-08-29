@@ -15,24 +15,24 @@ document.addEventListener("DOMContentLoaded", function () {
             const enteredEmail = emailInput.value;
             const enteredPassword = passwordInput.value;
 
-            if (enteredEmail ===  storedUserData.email && enteredPassword === storedUserData.password) {
-                window.location.href = '../main/main.html'
+            if (enteredEmail === storedUserData.email && enteredPassword === storedUserData.password) {
+                window.location.href = '/user-side/components/main-user/main-user.html';
             } else {
-                alert('Invalid email or password. Please try again.')
+                alert('Invalid email or password. Please try again.');
             }
         });
     } else {
-        loginForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+            const email = emailInput.value;
+            const password = passwordInput.value;
 
-            const predefinedEmail = "admin@jk.com";
-            const predefinedPassword = "admin";
+            const predefinedAdminEmail = "admin@jk.com";
+            const predefinedAdminPassword = "admin"; 
 
-            if (email === predefinedEmail && password === predefinedPassword) {
-                alert("Login successful!");
+            if (email === predefinedAdminEmail && password === predefinedAdminPassword) {
+                alert("Admin Login successful!");
                 window.location.href = "../main/main.html";
             } else {
                 alert("Invalid email or password");

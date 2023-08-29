@@ -43,7 +43,7 @@ signupForm.addEventListener('submit', (e) => {
 
     alert('Account created successfully!');
     signupForm.reset();
-    window.location.href = '../main/main.html'
+    window.location.href = '../loginAndSignup/login.html'
 });
 
 function togglePasswordVisibility(inputElement) {
