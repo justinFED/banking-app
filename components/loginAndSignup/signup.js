@@ -15,9 +15,9 @@ signupForm.addEventListener('submit', (e) => {
     const name = fullNameInput.value;
     const email = emailInput.value;
     const number = numberInput.value;
-    const existingUserData = JSON.parse(localStorage.getItem('userData'));
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
 
-    if (existingUserData && existingUserData.email === email) {
+    if (existingUsers.some(user => user.email === email)) {
         alert('An account with this email already exists. Please log in.');
         return;
     }
@@ -32,25 +32,27 @@ signupForm.addEventListener('submit', (e) => {
         return;
     }
 
-    const userData = {
+    const newUser = {
         name: name,
         email: email,
         phone: number,
         password: newPasswordInput.value
     };
 
-    localStorage.setItem('userData', JSON.stringify(userData));
+    existingUsers.push(newUser);
+
+    localStorage.setItem('users', JSON.stringify(existingUsers));
 
     alert('Account created successfully!');
     signupForm.reset();
-    window.location.href = '../loginAndSignup/login.html'
+    window.location.href = '../loginAndSignup/login.html';
 });
 
 function togglePasswordVisibility(inputElement) {
     if (inputElement.type === 'password') {
-        inputElement.type = 'text'
+        inputElement.type = 'text';
     } else {
-        inputElement.type = 'password'
+        inputElement.type = 'password';
     }
 }
 
@@ -59,12 +61,12 @@ togglePassword.addEventListener('mousedown', () => {
     timeoutId = setTimeout(() => {
         if (isToggling) {
             togglePasswordVisibility(newPasswordInput);
-            togglePasswordVisibility(retypePasswordInput)
+            togglePasswordVisibility(retypePasswordInput);
         }
-    }, 10)
-})
+    }, 10);
+});
 
 togglePassword.addEventListener('mouseup', () => {
-    togglePasswordVisibility(newPasswordInput)
-    togglePasswordVisibility(retypePasswordInput)
-})
+    togglePasswordVisibility(newPasswordInput);
+    togglePasswordVisibility(retypePasswordInput);
+});

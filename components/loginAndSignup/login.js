@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("login-form");
-    const storedUserData = JSON.parse(localStorage.getItem('userData'));
-    const storedAdminData = JSON.parse(localStorage.getItem('adminData'));
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const togglePassword = document.querySelector('.fa-regular');
@@ -9,51 +7,34 @@ document.addEventListener("DOMContentLoaded", function () {
     let isToggling = false;
     let timeoutId;
 
-    if (storedUserData) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-            const enteredEmail = emailInput.value;
-            const enteredPassword = passwordInput.value;
+        const enteredEmail = emailInput.value;
+        const enteredPassword = passwordInput.value;
 
-            if (enteredEmail === storedUserData.email && enteredPassword === storedUserData.password) {
-                window.location.href = '/user-side/components/main-user/main-user.html';
-            } else {
-                alert('Invalid email or password. Please try again.');
-            }
-        });
-    } else if (storedAdminData) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        const storedUserData = JSON.parse(localStorage.getItem('users'));
+        const storedAdminData = JSON.parse(localStorage.getItem('adminData'));
 
-            const enteredEmail = emailInput.value;
-            const enteredPassword = passwordInput.value;
+        const matchedUser = storedUserData.find(user => user.email === enteredEmail && user.password === enteredPassword);
 
-            if (enteredEmail === storedAdminData.email && enteredPassword === storedAdminData.password) {
-                window.location.href = '../main/main.html'; 
-            } else {
-                alert('Invalid email or password. Please try again.');
-            }
-        });
-    } else {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const email = emailInput.value;
-            const password = passwordInput.value;
-
+        if (matchedUser) {
+            window.location.href = '/user-side/components/main-user/main-user.html';
+        } else if (storedAdminData && enteredEmail === storedAdminData.email && enteredPassword === storedAdminData.password) {
+            window.location.href = '../main/main.html'; 
+        } else {
             const predefinedAdminEmail = "admin@jk.com";
             const predefinedAdminPassword = "admin";
 
-            if (email === predefinedAdminEmail && password === predefinedAdminPassword) {
+            if (enteredEmail === predefinedAdminEmail && enteredPassword === predefinedAdminPassword) {
                 alert("Admin Login successful!");
+                localStorage.setItem("adminData", JSON.stringify({ email: enteredEmail, password: enteredPassword }));
                 window.location.href = "../main/main.html";
             } else {
                 alert("Invalid email or password");
             }
-        });
-    }
-
+        }
+    });
 
     togglePassword.addEventListener('mousedown', () => {
         isToggling = true;
@@ -67,12 +48,4 @@ document.addEventListener("DOMContentLoaded", function () {
     togglePassword.addEventListener('mouseup', () => {
         togglePasswordVisibility();
     });
-
-
-
-
-
-
-
-
 });

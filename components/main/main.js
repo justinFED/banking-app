@@ -4,6 +4,11 @@ const closePopup = document.getElementById("close");
 const userForm = document.getElementById("user-form");
 const userTableBody = document.getElementById("user-list");
 const totalUsersElement = document.getElementById("totalUsers");
+const adminLoginSection = document.getElementById("admin-login");
+const adminUsernameInput = document.getElementById("admin-username");
+const adminPasswordInput = document.getElementById("admin-password");
+const adminLoginButton = document.getElementById("admin-login-button");
+const userManagementSection = document.getElementById("user-management");
 
 let addUser = [];
 
@@ -15,6 +20,25 @@ if (savedAddUser) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const storedAdminCredentials = localStorage.getItem("adminCredentials");
+    if (storedAdminCredentials) {
+        adminLoginSection.style.display = "none";
+        userManagementSection.style.display = "block";
+    } else {
+        adminLoginButton.addEventListener("click", () => {
+            const adminUsername = adminUsernameInput.value;
+            const adminPassword = adminPasswordInput.value;
+
+            if (checkAdminCredentials(adminUsername, adminPassword)) {
+                adminLoginSection.style.display = "none";
+                userManagementSection.style.display = "block";
+                localStorage.setItem("adminCredentials", JSON.stringify({ username: adminUsername, password: adminPassword }));
+            } else {
+                alert("Invalid admin credentials. Please try again.");
+            }
+        });
+    }
+
     addUserButton.addEventListener("click", () => {
         popup.style.display = "flex";
     });
@@ -65,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('updateTableEvent', () => {
         updateTable(addUser);
-    })
+    });
 });
 
 function updateTable(data) {
@@ -109,6 +133,22 @@ function updateTotalUsersCount(data) {
     totalCashElement.textContent = "$" + totalCash.toFixed(2);
 }
 
-function logout() {
-    window.location.href = 'http://127.0.0.1:5501/index.html';
+function checkAdminCredentials(username, password) {
+    const hardcodedAdminUsername = "admin@jk.com";
+    const hardcodedAdminPassword = "admin";
+    return username === hardcodedAdminUsername && password === hardcodedAdminPassword;
 }
+
+function logout() {
+    window.location.href = '/index.html';
+}
+
+
+
+
+
+
+
+
+
+
