@@ -20,6 +20,14 @@ body {
     background-color: whitesmoke;
 }
 
+#homepage {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
 html {
     font-size: 62.5%;
     overflow-x: hidden;
@@ -87,7 +95,6 @@ header h1 {
 }
 
 #tagline {
-    position: absolute;
     top: 250px;
     left: 150px;
 }
@@ -98,7 +105,6 @@ header h1 {
 }
 
 #cover-image {
-    position: absolute;
     width: 900px;
     top: 80px;
     left: 600px;
