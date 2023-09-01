@@ -152,12 +152,7 @@ body {
 }
 
 .side-box {
-    background: white;
-    height: 850px;
-    width: 850px;
-    border-radius: 0.75rem;
-    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
-    box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,12 +163,12 @@ body {
 
 .balance-box {
     background: white;
-    height: 200px;
-    width: 100%;
-    border-bottom: 2px solid black;
+    height: 250px;
+    width: 450px;
+    border-radius: 0.75rem;
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
     padding: 1.5rem;
-    border-top-right-radius: 0.75rem;
-    border-top-left-radius: 0.75rem;
 
 }
 
@@ -196,33 +191,29 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .balance-items {
     background: white;
-    height: 250px;
+    height: 580px;
     width: 450px;
     border-radius: 0.75rem;
     border: 0.0625rem solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
     padding: 1.5rem;
 
+}
+
+.balance-items .balance-button {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.balance-items .balance-button button {
+    background:#F9A825 ;
+    border-color: #F9A825;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 0.75rem;
 }
 
 
