@@ -87,6 +87,7 @@ body {
     width: calc(100% - 300px);
     margin-left: 300px;
     position: relative;
+    
 
 }
 
@@ -143,20 +144,21 @@ body {
 }
 
 
-#main-dasboard {
-    position: absolute;
-    padding: 2rem 9%;
+.container-balance {
+    display: flex;
+    margin: 30px;
+    gap: 20px;
+    
 }
 
-.container-balance {
-    position: relative;
+.balance-box {
     background: white;
     height: 250px;
     width: 550px;
-    left: 300px;
-    top: 150px;
     border-radius: 0.75rem;
     border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 6px 5px 0px #0070ba;
+
     padding: 1.5rem;
 }
 
@@ -193,32 +195,20 @@ body {
 
 }
 
-
-.container-transaction {
-    position: relative;
+.box {
     background: white;
     height: 850px;
-    width: 550px;
-    left: 300px;
-    top: 150px;
-    border-radius: 0.75rem;
-    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    margin-top: 30px;
-}
-
-.container-transaction h1 {
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    color: #0c0c0d;
-}
-
-.box-transaction {
-    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
-    height: 100px;
     width: 100%;
-    margin-top: 20px;
     border-radius: 0.75rem;
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 7px 0px #0070ba;
+
+    padding: 1.5rem;
 }
+
+
+
+
+
+
 
