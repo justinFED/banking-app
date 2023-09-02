@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 const addUserButton = document.getElementById("add-user");
 const popup = document.getElementById("popup");
 const closePopup = document.getElementById("close");
@@ -142,7 +143,7 @@ function checkAdminCredentials(username, password) {
 function logout() {
     window.location.href = '/index.html';
 }
-
+});
 
 
 
