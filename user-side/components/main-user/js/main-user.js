@@ -31,8 +31,10 @@ function registerUser() {
 }
 
 
-    // Balance
+    // Balance + Deposit + Withdraw 
+
 const depositButton = document.getElementById("depositBtn");
+const withdrawButton = document.getElementById("withdrawBtn");
 const balanceAmount = document.getElementById("balanceAmount");
 
 
@@ -46,20 +48,44 @@ depositButton.addEventListener("click", function() {
   
     const depositAmount = parseFloat(prompt("Enter the amount to deposit:"));
     
-
+   
     if (!isNaN(depositAmount) && depositAmount > 0) {
- 
+     
         currentBalance += depositAmount;
 
-    
+     
         balanceAmount.innerText = "$" + currentBalance.toFixed(2);
 
-      
+        
         localStorage.setItem("balance", currentBalance.toString());
         
     } else {
         alert("Please enter a valid positive number for the deposit.");
     }
 });
+
+
+withdrawButton.addEventListener("click", function() {
+ 
+    const withdrawAmount = parseFloat(prompt("Enter the amount to withdraw:"));
+    
+ 
+    if (!isNaN(withdrawAmount) && withdrawAmount > 0 && currentBalance >= withdrawAmount) {
+      
+        currentBalance -= withdrawAmount;
+
+        
+        balanceAmount.innerText = "$" + currentBalance.toFixed(2);
+
+        
+        localStorage.setItem("balance", currentBalance.toString());
+        
+    } else if (currentBalance < withdrawAmount) {
+        alert("Insufficient balance to withdraw.");
+    } else {
+        alert("Please enter a valid positive number for the withdrawal.");
+    }
+});
+
 
 

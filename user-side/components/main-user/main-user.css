@@ -285,7 +285,13 @@ body {
     padding: 1.8em 1.2em;
     box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
     border-radius: 0.6em;
-    height: 400px;
+    height: 300px;
+}
+
+.list h3 {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    width: 100%;
 }
 
 .sublist-content {
