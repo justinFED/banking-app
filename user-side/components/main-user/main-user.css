@@ -73,9 +73,9 @@ body {
     font-size: 20px;
 }
 
-#interface .navigation .profile img {
-    width: 40px;
-    height: 40px;
+#interface .navigation .profile a {
+    text-decoration: none;
+    color: black;
 }
 
 .i-name {
