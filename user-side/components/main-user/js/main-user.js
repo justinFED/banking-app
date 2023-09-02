@@ -65,7 +65,6 @@ function registerUser() {
         localStorage.setItem("transactions", JSON.stringify(transactions));
     }
     
-    // Load existing transactions from localStorage
     transactions.forEach(transaction => {
         addTransactionRow(transaction.date, transaction.description, transaction.amount);
     });
@@ -77,7 +76,6 @@ function registerUser() {
             currentBalance += depositAmount;
             balanceAmount.innerText = "$" + currentBalance.toFixed(2);
     
-            // Record the deposit transaction in the history
             const currentDate = new Date().toLocaleString();
             addTransactionRow(currentDate, "Deposit", depositAmount);
             
@@ -95,7 +93,6 @@ function registerUser() {
             currentBalance -= withdrawAmount;
             balanceAmount.innerText = "$" + currentBalance.toFixed(2);
     
-            // Record the withdrawal transaction in the history
             const currentDate = new Date().toLocaleString();
             addTransactionRow(currentDate, "Withdrawal", withdrawAmount);
             
