@@ -13,27 +13,49 @@ const list = document.getElementById("list");
 
 let tempAmount = 0;
 
-// Set Budget App
+window.addEventListener("load", () => {
+    const savedData = localStorage.getItem("budgetAppData");
+    if (savedData) {
+        const data = JSON.parse(savedData);
+        tempAmount = data.tempAmount;
+        amount.innerHTML = tempAmount;
+        balanceValue.innerText = tempAmount - data.expenditureValue;
+        data.expenses.forEach(expense => {
+            listCreator(expense.productTitle, expense.userAmount);
+        });
+    }
+});
+
+const saveDataToLocalStorage = () => {
+    const dataToSave = {
+        tempAmount: tempAmount,
+        expenditureValue: parseInt(expenditureValue.innerText),
+        expenses: []
+    };
+    const expenseElements = document.querySelectorAll(".sublist-content");
+    expenseElements.forEach(expenseElement => {
+        const productTitle = expenseElement.querySelector(".product").innerText;
+        const userAmount = expenseElement.querySelector(".amount").innerText;
+        dataToSave.expenses.push({
+            productTitle: productTitle,
+            userAmount: userAmount
+        });
+    });
+    localStorage.setItem("budgetAppData", JSON.stringify(dataToSave));
+};
 
 totalAmountButton.addEventListener("click", () => {
     tempAmount = totalAmount.value;
-    // empty or negats
-    if(tempAmount === "" || tempAmount < 0) {
+    if (tempAmount === "" || tempAmount < 0) {
         errorMessage.classList.remove("hide")
-    }
-    else{
+    } else {
         errorMessage.classList.add("hide");
-        // Set budget
         amount.innerHTML = tempAmount;
-        // Set Balance
         balanceValue.innerText = tempAmount - expenditureValue.innerText;
-        // Clear
         totalAmount.value = "";
     }
-
+    saveDataToLocalStorage();
 });
-
-// Function To Disable Edit and Delete Button
 
 const disableButtons = (bool) => {
     let editButton = document.getElementsByClassName("edit");
@@ -42,9 +64,7 @@ const disableButtons = (bool) => {
     });
 };
 
-// Function to Modify List
-
-const modifyElement = (element, edit=false) => {
+const modifyElement = (element, edit = false) => {
     let parentDiv = element.parentElement;
     let currentBalance = balanceValue.innerText;
     let currentExpense = expenditureValue.innerText;
@@ -55,14 +75,11 @@ const modifyElement = (element, edit=false) => {
         userAmount.value = parentAmount;
         disableButtons(true);
     }
-
     balanceValue.innerText = parseInt(currentBalance) + parseInt(parentAmount);
     expenditureValue.innerText = parseInt(currentExpense) - parseInt(parentAmount);
     parentDiv.remove();
-
+    saveDataToLocalStorage();
 };
-
-// Function Create List
 
 const listCreator = (expenseName, expenseValue) => {
     let sublistContent = document.createElement("div");
@@ -75,44 +92,31 @@ const listCreator = (expenseName, expenseValue) => {
     editButton.addEventListener("click", () => {
         modifyElement(editButton, true);
     });
-
     let deleteButton = document.createElement("button");
     deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
     deleteButton.style.fontSize = "24px";
     deleteButton.addEventListener("click", () => {
-        modifyElement(deleteButton);} );
- 
+        modifyElement(deleteButton);
+    });
     sublistContent.appendChild(editButton);
     sublistContent.appendChild(deleteButton);
     document.getElementById("list").appendChild(sublistContent);
-    
+    saveDataToLocalStorage();
 };
 
-// Fuction to Add Expense
-
 checkAmountButton.addEventListener("click", () => {
-    if(!userAmount.value || !productTitle.value) {
+    if (!userAmount.value || !productTitle.value) {
         productTitleError.classList.remove("hide");
         return false;
     }
-
     disableButtons(false);
-    
-    //Expense
     let expenditure = parseInt(userAmount.value);
-
-    // Total Expense
-
     let sum = parseInt(expenditureValue.innerText) + expenditure;
     expenditureValue.innerText = sum;
-    
-
-    // Total Balance
     const totalBalance = tempAmount - sum;
     balanceValue.innerText = totalBalance;
-
-    // Create List
     listCreator(productTitle.value, userAmount.value);
     productTitle.value = "";
     userAmount.value = "";
+    saveDataToLocalStorage();
 });
