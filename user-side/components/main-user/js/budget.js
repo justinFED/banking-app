@@ -120,3 +120,21 @@ checkAmountButton.addEventListener("click", () => {
     userAmount.value = "";
     saveDataToLocalStorage();
 });
+
+const clearAllButton = document.getElementById("clear-all-button");
+
+const clearAllData = () => {
+    tempAmount = 0;
+    amount.innerText = "0";
+    balanceValue.innerText = "0";
+    expenditureValue.innerText = "0";
+    list.innerHTML = "";
+    localStorage.removeItem('budgetData');
+};
+
+clearAllButton.addEventListener("click", () => {
+    const confirmation = confirm("Are you sure you want to clear all data?");
+    if (confirmation) {
+        clearAllData();
+    }
+});
