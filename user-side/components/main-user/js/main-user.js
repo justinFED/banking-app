@@ -39,6 +39,7 @@ function registerUser() {
     const transactionHistory = document.getElementById("transaction-history");
     
     let currentBalance = parseFloat(localStorage.getItem("balance")) || 0;
+    let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
     
     balanceAmount.innerText = "$" + currentBalance.toFixed(2);
     
@@ -59,6 +60,16 @@ function registerUser() {
         transactionHistory.appendChild(row);
     }
     
+    function updateLocalStorage() {
+        localStorage.setItem("balance", currentBalance.toString());
+        localStorage.setItem("transactions", JSON.stringify(transactions));
+    }
+    
+    // Load existing transactions from localStorage
+    transactions.forEach(transaction => {
+        addTransactionRow(transaction.date, transaction.description, transaction.amount);
+    });
+    
     depositButton.addEventListener("click", function() {
         const depositAmount = parseFloat(prompt("Enter the amount to deposit:"));
     
@@ -69,8 +80,9 @@ function registerUser() {
             // Record the deposit transaction in the history
             const currentDate = new Date().toLocaleString();
             addTransactionRow(currentDate, "Deposit", depositAmount);
-    
-            localStorage.setItem("balance", currentBalance.toString());
+            
+            transactions.push({ date: currentDate, description: "Deposit", amount: depositAmount });
+            updateLocalStorage();
         } else {
             alert("Please enter a valid positive number for the deposit.");
         }
@@ -86,14 +98,16 @@ function registerUser() {
             // Record the withdrawal transaction in the history
             const currentDate = new Date().toLocaleString();
             addTransactionRow(currentDate, "Withdrawal", withdrawAmount);
-    
-            localStorage.setItem("balance", currentBalance.toString());
+            
+            transactions.push({ date: currentDate, description: "Withdrawal", amount: withdrawAmount });
+            updateLocalStorage();
         } else if (currentBalance < withdrawAmount) {
             alert("Insufficient balance to withdraw.");
         } else {
             alert("Please enter a valid positive number for the withdrawal.");
         }
     });
+    
     
 
 
