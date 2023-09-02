@@ -73,6 +73,11 @@ body {
     font-size: 20px;
 }
 
+#interface .navigation .profile img {
+    width: 40px;
+    height: 40px;
+}
+
 .i-name {
     color: var(--blue);
     padding: 30px 30px 0 30px;
