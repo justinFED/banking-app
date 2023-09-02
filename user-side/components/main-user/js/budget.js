@@ -14,20 +14,49 @@ const list = document.getElementById("list");
 let tempAmount = 0;
 
 const saveDataToLocalStorage = () => {
+    const dataToSave = {
+        tempAmount: tempAmount,
+        totalBudget: amount.innerText,
+        balance: balanceValue.innerText,
+        expenditureValue: expenditureValue.innerText,
+        expenses: []
+    };
 
+    const expenseItems = list.querySelectorAll(".sublist-content");
+    expenseItems.forEach(item => {
+        const productName = item.querySelector(".product").innerText;
+        const expenseAmount = item.querySelector(".amount").innerText;
+        dataToSave.expenses.push({ productName, expenseAmount });
+    });
+
+    localStorage.setItem('budgetData', JSON.stringify(dataToSave));
 };
+
+window.addEventListener('load', () => {
+    const savedData = localStorage.getItem('budgetData');
+    if (savedData) {
+        const parsedData = JSON.parse(savedData);
+        tempAmount = parsedData.tempAmount;
+        amount.innerText = parsedData.totalBudget;
+        balanceValue.innerText = parsedData.balance;
+        expenditureValue.innerText = parsedData.expenditureValue;
+        parsedData.expenses.forEach(expense => {
+            listCreator(expense.productName, expense.expenseAmount);
+        });
+    }
+});
 
 totalAmountButton.addEventListener("click", () => {
     tempAmount = totalAmount.value;
     if (tempAmount === "" || tempAmount < 0) {
-        errorMessage.classList.remove("hide")
+        errorMessage.classList.remove("hide");
     } else {
         errorMessage.classList.add("hide");
-        amount.innerHTML = tempAmount;
+        amount.innerText = tempAmount;
         balanceValue.innerText = tempAmount - expenditureValue.innerText;
         totalAmount.value = "";
+        saveDataToLocalStorage();
     }
-
 });
 
 const disableButtons = (bool) => {
@@ -73,7 +102,6 @@ const listCreator = (expenseName, expenseValue) => {
     sublistContent.appendChild(editButton);
     sublistContent.appendChild(deleteButton);
     document.getElementById("list").appendChild(sublistContent);
- 
 };
 
 checkAmountButton.addEventListener("click", () => {
@@ -90,5 +118,5 @@ checkAmountButton.addEventListener("click", () => {
     listCreator(productTitle.value, userAmount.value);
     productTitle.value = "";
     userAmount.value = "";
-  
+    saveDataToLocalStorage();
 });
