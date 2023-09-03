@@ -81,6 +81,77 @@ body {
     color: black;
 }
 
+
+
+
+#interface .navigation .header-links {
+    display: flex;
+    justify-content: flex-end; /* Align links to the right */
+    align-items: center;
+}
+
+#interface .navigation .header-links ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#interface .navigation .header-links li {
+    margin-right: 60px; /* Adjust the right margin to control spacing between links */
+}
+
+#interface .navigation .header-links a {
+    text-decoration: none;
+    color: #333; /* Change the link color as needed */
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s; /* Add a smooth color transition on hover */
+}
+
+#interface .navigation .header-links a:hover {
+    color: #0070ba; /* Change the link color on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .i-name {
     color: var(--blue);
     padding: 30px 30px 0 105px;
@@ -428,7 +499,7 @@ tr:hover {
 .contacts-box {
     background: white;
     height: 850px;
-    width: 450px;
+    width: 550px;
     border-radius: 0.75rem;
     border: 0.0625rem solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
@@ -500,7 +571,7 @@ tr:hover {
    justify-content: space-evenly;
    align-items: center;
    width: 90%;
-   
+   margin-bottom: 100px;
 }
 
 .feature .feature-box {
