@@ -459,3 +459,12 @@ tr:hover {
 .clickable-icon:active {
     color: red; /* Change the icon color when clicked */
 }
+
+.delete-button {
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    border: none;
+}
