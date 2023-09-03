@@ -18,12 +18,15 @@ body {
     position: relative;
     display: flex;
     background: #f5f7fa;
+    min-height: 100vh;
+   
+    flex-direction: column;
 }
 
 #interface {
     width: 100%;
     position: relative;
- 
+    flex-grow: 1;
     
 }
 
@@ -513,5 +516,47 @@ tr:hover {
 
 /* Footer */
 
-/* Footer styling */
+footer {
+    background-color: #0070ba;
+    color: #fff;
+    padding: 20px 20px;
+    text-align: center;
+}
 
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-social a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.footer-bottom {
+    margin-top: auto; /* Push the footer to the bottom */
+    font-size: 14px;
+}
