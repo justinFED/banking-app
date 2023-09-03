@@ -416,3 +416,44 @@ tr:hover {
     border: none;
     color: #587ef4;
 }
+
+
+/* Contacts */
+
+.contacts-box {
+    background: white;
+    height: 850px;
+    width: 450px;
+    border-radius: 0.75rem;
+    border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
+    padding: 1.5rem;
+    
+}
+
+.contacts-box .box {
+    background-color: #587ef4;
+    color: #ffffff;
+    border-radius: 0.3em;
+    box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
+    font-weight: 500;
+    width: 100%;
+    padding: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* CSS for the clickable icon */
+.clickable-icon {
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth color transition on hover and click */
+}
+
+.clickable-icon:hover {
+    color: blue; /* Change the icon color on hover */
+}
+
+.clickable-icon:active {
+    color: red; /* Change the icon color when clicked */
+}
