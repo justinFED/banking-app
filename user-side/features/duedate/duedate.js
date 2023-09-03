@@ -1,13 +1,12 @@
-// Initialize variables
 const billReminders = [];
 
-// Get DOM elements
+
 const billNameInput = document.getElementById("billName");
 const dueDateInput = document.getElementById("dueDate");
 const addBillButton = document.getElementById("addBill");
 const billList = document.getElementById("billReminders");
 
-// Function to add a bill reminder
+
 function addBillReminder() {
     const billName = billNameInput.value;
     const dueDate = dueDateInput.value;
@@ -17,19 +16,16 @@ function addBillReminder() {
         listItem.textContent = `${billName} (Due on ${dueDate})`;
         billList.appendChild(listItem);
 
-        // Save the reminder
         billReminders.push({ name: billName, date: dueDate });
 
-        // Clear input fields
         billNameInput.value = "";
         dueDateInput.value = "";
     }
 }
 
-// Event listener for adding a bill reminder
+
 addBillButton.addEventListener("click", addBillReminder);
 
-// Function to check for upcoming bill reminders
 function checkUpcomingBills() {
     const currentDate = new Date();
 
@@ -42,5 +38,4 @@ function checkUpcomingBills() {
     }
 }
 
-// Check for upcoming bills when the page loads
 checkUpcomingBills();
