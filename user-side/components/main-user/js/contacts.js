@@ -1,6 +1,10 @@
 function addContactToTable() {
     const name = prompt("Enter the contact's name:");
-    const email = prompt("Enter the contact's email:");
+    let email;
+
+    do {
+        email = prompt("Enter the contact's email:");
+    } while (!isValidEmail(email));
 
     if (name && email) {
         const table = document.getElementById("contactsTable").getElementsByTagName('tbody')[0];
@@ -11,12 +15,12 @@ function addContactToTable() {
         nameCell.innerHTML = name;
         emailCell.innerHTML = email;
 
-        // Save the contact to localStorage
+        
         saveContactToLocalStorage(name, email);
     }
 }
 
-// Function to save a contact to localStorage
+
 function saveContactToLocalStorage(name, email) {
     let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
@@ -24,7 +28,7 @@ function saveContactToLocalStorage(name, email) {
     localStorage.setItem("contacts", JSON.stringify(contacts));
 }
 
-// Function to load contacts from localStorage and populate the table
+
 function loadContactsFromLocalStorage() {
     const table = document.getElementById("contactsTable").getElementsByTagName('tbody')[0];
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
@@ -39,9 +43,16 @@ function loadContactsFromLocalStorage() {
     }
 }
 
-// Add a click event listener to the add contact icon
+function isValidEmail(email) {
+    const emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.value = email;
+    return emailInput.checkValidity();
+}
+
+
 const addContactIcon = document.getElementById("addContactIcon");
 addContactIcon.addEventListener("click", addContactToTable);
 
-// Load contacts from localStorage when the page loads
+
 window.addEventListener("load", loadContactsFromLocalStorage);
