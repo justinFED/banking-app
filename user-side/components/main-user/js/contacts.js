@@ -1,75 +1,83 @@
-// Initialize the balance in localStorage (you can set it to any initial value)
+// Tranfer Function
+
 if (!localStorage.getItem("balance")) {
-    localStorage.setItem("balance", "1000.00"); // Set an initial balance of $1000.00 if it doesn't exist
+    localStorage.setItem("balance", "1000.00"); 
 }
 
-// Function to update the balance display
+
 function updateBalanceDisplay(newBalance) {
     const balanceAmount = document.getElementById("balanceAmount");
     balanceAmount.textContent = `$${newBalance.toFixed(2)}`;
 }
 
-// Function to update the balance in localStorage
+
 function updateLocalStorageBalance(newBalance) {
     localStorage.setItem("balance", newBalance.toFixed(2));
 }
 
-// ...
 
-// Add an event listener for the "Transfer" button
+function searchContactByEmail(email) {
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+    
+    for (const contact of contacts) {
+        if (contact.email === email) {
+            return contact.name; 
+        }
+    }
+
+    return null; 
+}
+
+
 const transferButton = document.getElementById("transferBtn");
 transferButton.addEventListener("click", transferMoney);
 
 function transferMoney() {
-    // Get the amount to transfer from the user
+   
     const amount = parseFloat(prompt("Enter the amount to transfer:"));
-    
-    // Check if the amount is valid (greater than 0 and available in balance)
+
     if (isNaN(amount) || amount <= 0) {
         alert("Invalid amount. Please enter a valid amount.");
         return;
     }
 
-    // Check if the user has sufficient balance
     const availableBalance = parseFloat(localStorage.getItem("balance")) || 0;
     if (amount > availableBalance) {
         alert("Insufficient balance.");
         return;
     }
 
-    // Get the contact to transfer to (you can use your existing code for this)
-    const contactName = prompt("Enter the contact's name to transfer to:");
+    const transferToEmail = prompt("Enter the contact's email to transfer to:");
 
-    // Update the available balance
-    const newBalance = availableBalance - amount;
+   
+    if (!isValidEmail(transferToEmail)) {
+        alert("Invalid email. Please enter a valid email address.");
+        return;
+    }
 
-    // Update the balance in localStorage
-    updateLocalStorageBalance(newBalance);
+    
+    const contactName = searchContactByEmail(transferToEmail);
 
-    // Update the balance display
-    updateBalanceDisplay(newBalance);
+   
+    if (contactName) {
+       
+        const newBalance = availableBalance - amount;
 
-    // Perform the transfer (you can implement this part based on your application's logic)
-    // For example, you can update a transaction history, notify the user, etc.
+     
+        updateLocalStorageBalance(newBalance);
 
-    alert(`Successfully transferred $${amount} to ${contactName}. New balance: $${newBalance.toFixed(2)}`);
+       
+        updateBalanceDisplay(newBalance);
+
+
+        alert(`Successfully transferred $${amount} to ${contactName}. New balance: $${newBalance.toFixed(2)}`);
+    } else {
+        alert("Contact not found. Please check the email address.");
+    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// End of transfer
 
 function addContactToTable() {
     const name = prompt("Enter the contact's name:");
