@@ -81,12 +81,9 @@ body {
     color: black;
 }
 
-
-
-
 #interface .navigation .header-links {
     display: flex;
-    justify-content: flex-end; /* Align links to the right */
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -98,59 +95,20 @@ body {
 }
 
 #interface .navigation .header-links li {
-    margin-right: 60px; /* Adjust the right margin to control spacing between links */
+    margin-right: 60px; 
 }
 
 #interface .navigation .header-links a {
     text-decoration: none;
-    color: #333; /* Change the link color as needed */
+    color: #333; 
     font-weight: 600;
     font-size: 16px;
-    transition: color 0.3s; /* Add a smooth color transition on hover */
+    transition: color 0.3s; 
 }
 
 #interface .navigation .header-links a:hover {
-    color: #0070ba; /* Change the link color on hover */
+    color: #0070ba; 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .i-name {
     color: var(--blue);
@@ -291,33 +249,6 @@ td.amount {
 tr:hover {
     background-color: #ddd;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Budget App */
 
@@ -520,18 +451,17 @@ tr:hover {
     justify-content: space-between;
 }
 
-/* CSS for the clickable icon */
 .clickable-icon {
     cursor: pointer;
-    transition: color 0.3s ease; /* Smooth color transition on hover and click */
+    transition: color 0.3s ease; 
 }
 
 .clickable-icon:hover {
-    color: blue; /* Change the icon color on hover */
+    color: blue; 
 }
 
 .clickable-icon:active {
-    color: red; /* Change the icon color when clicked */
+    color: red; 
 }
 
 .delete-button {
@@ -582,7 +512,40 @@ tr:hover {
     border: 0.0625rem solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(15, 15, 20, 0.24) 0px 3px 8px;
     padding: 1.5rem;
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+
+    
 }
+
+.feature .feature-box p {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1; 
+    padding: 10px; 
+    border-radius: 5px; 
+    max-width: 80%;
+    word-wrap: break-word;
+    width: 100%;
+
+
+    
+}
+
+.feature .feature-box img {
+    margin: 0 auto;
+    height: 180px;
+    max-width: 100%;
+    opacity: 0.3;
+
+}
+
+
 
 
 /* Footer */
@@ -628,6 +591,6 @@ footer {
 }
 
 .footer-bottom {
-    margin-top: auto; /* Push the footer to the bottom */
+    margin-top: auto;
     font-size: 14px;
 }
