@@ -1,0 +1,39 @@
+:root {
+    --blue: #0070ba;
+    --white: whitesmoke;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: var(--blue);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+section {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    
+}
+
+#post-content {
+    width: 100%;
+}
+
+#submit-post {
+    margin-top: 10px;
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#new-post input {
+    margin-bottom: 20px;
+}
