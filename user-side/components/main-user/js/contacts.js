@@ -34,7 +34,6 @@ const transferButton = document.getElementById("transferBtn");
 transferButton.addEventListener("click", transferMoney);
 
 function transferMoney() {
-   
     const amount = parseFloat(prompt("Enter the amount to transfer:"));
 
     if (isNaN(amount) || amount <= 0) {
@@ -50,26 +49,21 @@ function transferMoney() {
 
     const transferToEmail = prompt("Enter the contact's email to transfer to:");
 
-   
     if (!isValidEmail(transferToEmail)) {
         alert("Invalid email. Please enter a valid email address.");
         return;
     }
 
-    
     const contactName = searchContactByEmail(transferToEmail);
 
-   
     if (contactName) {
-       
         const newBalance = availableBalance - amount;
+        const senderCurrentDate = new Date().toLocaleString();
+        addTransactionRow(senderCurrentDate, `Transfer to ${transferToEmail}`, -amount);
+        transactions.push({ date: senderCurrentDate, description: `Transfer to ${transferToEmail}`, amount: -amount });
 
-     
         updateLocalStorageBalance(newBalance);
-
-       
         updateBalanceDisplay(newBalance);
-
 
         alert(`Successfully transferred $${amount} to ${contactName}. New balance: $${newBalance.toFixed(2)}`);
     } else {
