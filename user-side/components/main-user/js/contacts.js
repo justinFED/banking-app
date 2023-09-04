@@ -60,7 +60,12 @@ function transferMoney() {
         const newBalance = availableBalance - amount;
         const senderCurrentDate = new Date().toLocaleString();
         addTransactionRow(senderCurrentDate, `Transfer to ${transferToEmail}`, -amount);
+
+        let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
         transactions.push({ date: senderCurrentDate, description: `Transfer to ${transferToEmail}`, amount: -amount });
+
+        localStorage.setItem("transactions", JSON.stringify(transactions));
 
         updateLocalStorageBalance(newBalance);
         updateBalanceDisplay(newBalance);
