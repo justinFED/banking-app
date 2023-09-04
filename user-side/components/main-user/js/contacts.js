@@ -1,7 +1,5 @@
-// Tranfer Function
-
 if (!localStorage.getItem("balance")) {
-    localStorage.setItem("balance", "1000.00"); 
+    localStorage.setItem("balance", "1000.00");
 }
 
 
@@ -18,16 +16,27 @@ function updateLocalStorageBalance(newBalance) {
 
 function searchContactByEmail(email) {
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-
     
     for (const contact of contacts) {
         if (contact.email === email) {
-            return contact.name; 
+            return contact; 
         }
     }
 
     return null; 
 }
+
+
+let availableBalance = parseFloat(localStorage.getItem("balance")) || 0;
+
+
+function updateBalanceDisplay() {
+    const balanceAmount = document.getElementById("balanceAmount");
+    balanceAmount.textContent = `$${availableBalance.toFixed(2)}`;
+}
+
+
+updateBalanceDisplay();
 
 const transferButton = document.getElementById("transferBtn");
 transferButton.addEventListener("click", transferMoney);
@@ -40,7 +49,6 @@ function transferMoney() {
         return;
     }
 
-    const availableBalance = parseFloat(localStorage.getItem("balance")) || 0;
     if (amount > availableBalance) {
         alert("Insufficient balance.");
         return;
@@ -53,29 +61,48 @@ function transferMoney() {
         return;
     }
 
-    const contactName = searchContactByEmail(transferToEmail);
+    const contact = searchContactByEmail(transferToEmail);
 
-    if (contactName) {
-        const newBalance = availableBalance - amount;
-        const senderCurrentDate = new Date().toLocaleString();
-        addTransactionRow(senderCurrentDate, `Transfer to ${transferToEmail}`, -amount);
+    if (contact) {
+        const newBalance = contact.balance + amount; // Add the transferred amount to the contact's balance
+        addTransactionRow(new Date().toLocaleString(), `Transfer to ${transferToEmail}`, -amount);
 
         let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-
-        transactions.push({ date: senderCurrentDate, description: `Transfer to ${transferToEmail}`, amount: -amount });
-
+        transactions.push({ date: new Date().toLocaleString(), description: `Transfer to ${transferToEmail}`, amount: -amount });
         localStorage.setItem("transactions", JSON.stringify(transactions));
 
-        updateLocalStorageBalance(newBalance);
-        updateBalanceDisplay(newBalance);
+        contact.balance = newBalance;
+        localStorage.setItem(`contactBalance_${contact.email}`, newBalance.toString());
 
-        alert(`Successfully transferred $${amount} to ${contactName}. New balance: $${newBalance.toFixed(2)}`);
+        updateBalanceDisplay();
+        updateBalanceInTable(transferToEmail, newBalance);
+
+        alert(`Successfully transferred $${amount} to ${contact.name}. New balance: $${newBalance.toFixed(2)}`);
     } else {
         alert("Contact not found. Please check the email address.");
     }
 }
 
-// End of transfer
+
+function updateBalanceInTable(email, newBalance) {
+    const emailCells = document.querySelectorAll('td:nth-child(2)');
+    for (const emailCell of emailCells) {
+        const emailInCell = emailCell.textContent.trim();
+        if (emailInCell === email) {
+            const row = emailCell.parentElement;
+            const balanceCell = row.cells[2];
+            balanceCell.textContent = `$${newBalance.toFixed(2)}`;
+            break;
+        }
+    }
+}
+
+
+function initializeBalance() {
+    updateBalanceDisplay();
+}
+
+initializeBalance();
 
 function addContactToTable() {
     const name = prompt("Enter the contact's name:");
@@ -121,7 +148,6 @@ function saveContactToLocalStorage(name, email, balance, hasDeleteButton = true)
     contacts.push({ name, email, balance, hasDeleteButton });
     localStorage.setItem("contacts", JSON.stringify(contacts));
 }
-
 
 function loadContactsFromLocalStorage() {
     const tableBody = document.getElementById("contactsTableBody");
@@ -171,8 +197,8 @@ function deleteContact(buttonElement) {
 }
 
 
+
 const addContactIcon = document.getElementById("addContactIcon");
 addContactIcon.addEventListener("click", addContactToTable);
-
 
 window.addEventListener("load", loadContactsFromLocalStorage);
