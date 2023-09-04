@@ -1,11 +1,10 @@
-const billReminders = [];
-
+const storedBillReminders = JSON.parse(localStorage.getItem("billReminders")) || [];
+const billReminders = storedBillReminders;
 
 const billNameInput = document.getElementById("billName");
 const dueDateInput = document.getElementById("dueDate");
 const addBillButton = document.getElementById("addBill");
 const billList = document.getElementById("billReminders");
-
 
 function addBillReminder() {
     const billName = billNameInput.value;
@@ -16,13 +15,15 @@ function addBillReminder() {
         listItem.textContent = `${billName} (Due on ${dueDate})`;
         billList.appendChild(listItem);
 
-        billReminders.push({ name: billName, date: dueDate });
+        const newBillReminder = { name: billName, date: dueDate };
+        billReminders.push(newBillReminder);
+
+        localStorage.setItem("billReminders", JSON.stringify(billReminders));
 
         billNameInput.value = "";
         dueDateInput.value = "";
     }
 }
-
 
 addBillButton.addEventListener("click", addBillReminder);
 
@@ -33,7 +34,9 @@ function checkUpcomingBills() {
         const dueDate = new Date(reminder.date);
 
         if (dueDate >= currentDate) {
-            alert(`Reminder: ${reminder.name} is due on ${reminder.date}`);
+            const listItem = document.createElement("li");
+            listItem.textContent = `Reminder: ${reminder.name} is due on ${reminder.date}`;
+            billList.appendChild(listItem);
         }
     }
 }

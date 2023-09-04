@@ -4,23 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bill Due Date Reminders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
     <link rel="stylesheet" href="duedate.css">
 </head>
 <body>
-    <div class="container">
+    
+    <!-- Header -->
+    <div class="navigation">
+        <div class="n1">
+            <h1>JBank</h1>
+        </div>
+
+        <div class="header-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="profile">
+            <i class="far fa-bell"></i>
+            <a href="/index.html">Logout</a>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="content-container">
         <h1>Bill Due Date Reminders</h1>
-        <div class="bill-form">
+        <div class="container">
             <label for="billName">Bill Name:</label>
             <input type="text" id="billName" placeholder="Enter bill name">
             <label for="dueDate">Due Date:</label>
             <input type="date" id="dueDate">
             <button id="addBill">Add Reminder</button>
+
+            <div class="bill-list">
+                <h2>Upcoming Bills</h2>
+                <ul id="billReminders"></ul>
+            </div>
+
         </div>
-        <div class="bill-list">
-            <h2>Upcoming Bills</h2>
-            <ul id="billReminders"></ul>
-        </div>
+
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h1>JBank</h1>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 JBank. All rights reserved.
+        </div>
+    </footer>
+
     <script src="duedate.js"></script>
 </body>
 </html>

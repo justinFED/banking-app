@@ -1,20 +1,83 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap');
+
+:root {
+    --blue: #0070ba;
+    --white: whitesmoke;
+}
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Header */
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    padding: 15px 30px;
+    border-bottom: 3px solid var(--blue);
+    width: 100%;
+}
+
+.navigation h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.header-links li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.header-links a {
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile i {
+    margin-right: 5px;
+}
+
+/* Container  */
+.content-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-grow: 1;
+    flex-direction: column;
+    
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    border: 3px solid black;
+    padding: 30px;
+    margin: 20px;
+    height: 400px;
 }
 
 h1 {
@@ -23,6 +86,7 @@ h1 {
 
 .bill-form {
     margin-bottom: 20px;
+    
 }
 
 label {
@@ -35,13 +99,18 @@ input {
     margin-bottom: 10px;
 }
 
-button {
+button#addBill {
     background-color: #007BFF;
     color: #fff;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.bill-list {
+    text-align: center;
+    padding-top: 30px;
 }
 
 .bill-list h2 {
@@ -52,4 +121,51 @@ button {
 .bill-list ul {
     list-style-type: none;
     padding: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #0070ba;
+    color: #fff;
+    padding: 20px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-social a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.footer-bottom {
+    margin-top: auto;
+    font-size: 14px;
 }
