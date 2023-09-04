@@ -153,7 +153,15 @@ function isValidEmail(email) {
 
 function deleteContact(buttonElement) {
     var row = buttonElement.closest('tr');
+    const emailCell = row.cells[1];
+
+    const email = emailCell.textContent.trim();
+
     row.remove();
+
+    let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    contacts = contacts.filter(contact => contact.email !== email);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
 }
 
 
