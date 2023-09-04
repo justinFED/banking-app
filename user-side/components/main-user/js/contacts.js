@@ -29,7 +29,6 @@ function searchContactByEmail(email) {
     return null; 
 }
 
-
 const transferButton = document.getElementById("transferBtn");
 transferButton.addEventListener("click", transferMoney);
 
@@ -81,24 +80,27 @@ function transferMoney() {
 function addContactToTable() {
     const name = prompt("Enter the contact's name:");
     let email;
+    let balance;
 
     do {
         email = prompt("Enter the contact's email:");
     } while (!isValidEmail(email));
 
-    if (name && email) {
+    do {
+        balance = parseFloat(prompt("Enter the contact's balance:"));
+    } while (isNaN(balance));
+
+    if (name && email && !isNaN(balance)) {
         const table = document.getElementById("contactsTable").getElementsByTagName('tbody')[0];
         const newRow = table.insertRow(-1);
         const nameCell = newRow.insertCell(0);
         const emailCell = newRow.insertCell(1);
-        const balanceCell = newRow.insertCell(2); // Add balance cell
+        const balanceCell = newRow.insertCell(2);
         const deleteCell = newRow.insertCell(3);
 
         nameCell.innerHTML = name;
         emailCell.innerHTML = email;
-
-        balanceCell.innerHTML = "$0";
-        
+        balanceCell.innerHTML = "$" + balance.toFixed(2);
 
         const deleteButton = document.createElement("button");
         deleteButton.className = "delete-button";
@@ -109,35 +111,32 @@ function addContactToTable() {
 
         deleteCell.appendChild(deleteButton);
 
-        saveContactToLocalStorage(name, email);
+        saveContactToLocalStorage(name, email, balance, true);
     }
 }
 
-
-function saveContactToLocalStorage(name, email, hasDeleteButton = true) {
+function saveContactToLocalStorage(name, email, balance, hasDeleteButton = true) {
     let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
-    contacts.push({ name, email, hasDeleteButton });
+    contacts.push({ name, email, balance, hasDeleteButton });
     localStorage.setItem("contacts", JSON.stringify(contacts));
 }
 
 
 function loadContactsFromLocalStorage() {
-    const tableBody = document.getElementById("contactsTableBody"); // Updated ID
+    const tableBody = document.getElementById("contactsTableBody");
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
     for (const contact of contacts) {
         const newRow = tableBody.insertRow(-1);
         const nameCell = newRow.insertCell(0);
         const emailCell = newRow.insertCell(1);
-        const balanceCell = newRow.insertCell(2); // Add balance cell
-        const deleteCell = newRow.insertCell(3); // Adjust cell index
+        const balanceCell = newRow.insertCell(2);
+        const deleteCell = newRow.insertCell(3);
 
         nameCell.innerHTML = contact.name;
         emailCell.innerHTML = contact.email;
-
-        // Populate the balance cell with a placeholder value (modify as needed)
-        balanceCell.innerHTML = "$0"; // Replace with actual balance data
+        balanceCell.innerHTML = "$" + contact.balance.toFixed(2);
 
         if (contact.hasDeleteButton) {
             const deleteButton = document.createElement("button");
