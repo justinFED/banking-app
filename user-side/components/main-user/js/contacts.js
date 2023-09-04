@@ -91,10 +91,13 @@ function addContactToTable() {
         const newRow = table.insertRow(-1);
         const nameCell = newRow.insertCell(0);
         const emailCell = newRow.insertCell(1);
-        const deleteCell = newRow.insertCell(2);
+        const balanceCell = newRow.insertCell(2);
+        const deleteCell = newRow.insertCell(3);
 
         nameCell.innerHTML = name;
         emailCell.innerHTML = email;
+
+        balanceCell.innerHTML = "$0";
         
 
         const deleteButton = document.createElement("button");
@@ -120,17 +123,20 @@ function saveContactToLocalStorage(name, email, hasDeleteButton = true) {
 
 
 function loadContactsFromLocalStorage() {
-    const table = document.getElementById("contactsTable").getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById("contactsTableBody"); // Updated ID
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
     for (const contact of contacts) {
-        const newRow = table.insertRow(-1);
+        const newRow = tableBody.insertRow(-1);
         const nameCell = newRow.insertCell(0);
         const emailCell = newRow.insertCell(1);
-        const deleteCell = newRow.insertCell(2);
+        const balanceCell = newRow.insertCell(2);
+        const deleteCell = newRow.insertCell(3);
 
         nameCell.innerHTML = contact.name;
         emailCell.innerHTML = contact.email;
+
+        balanceCell.innerHTML = "$0"; 
 
         if (contact.hasDeleteButton) {
             const deleteButton = document.createElement("button");
