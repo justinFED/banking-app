@@ -1,5 +1,5 @@
 if (!localStorage.getItem("balance")) {
-    localStorage.setItem("balance", "1000.00");
+    localStorage.setItem("balance", "0");
 }
 
 
@@ -61,10 +61,12 @@ function transferMoney() {
         return;
     }
 
-    const contact = searchContactByEmail(transferToEmail);
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    const contactIndex = contacts.findIndex(contact => contact.email === transferToEmail);
 
-    if (contact) {
-        const newBalance = contact.balance + amount; // Add the transferred amount to the contact's balance
+    if (contactIndex !== -1) {
+        const contact = contacts[contactIndex];
+        const newBalance = contact.balance + amount;
         addTransactionRow(new Date().toLocaleString(), `Transfer to ${transferToEmail}`, -amount);
 
         let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -74,6 +76,11 @@ function transferMoney() {
         contact.balance = newBalance;
         localStorage.setItem(`contactBalance_${contact.email}`, newBalance.toString());
 
+        availableBalance -= amount;
+        localStorage.setItem("balance", availableBalance.toFixed(2));
+
+        localStorage.setItem("contacts", JSON.stringify(contacts));
+
         updateBalanceDisplay();
         updateBalanceInTable(transferToEmail, newBalance);
 
@@ -82,6 +89,9 @@ function transferMoney() {
         alert("Contact not found. Please check the email address.");
     }
 }
+
+
+
 
 
 function updateBalanceInTable(email, newBalance) {
@@ -99,7 +109,8 @@ function updateBalanceInTable(email, newBalance) {
 
 
 function initializeBalance() {
-    updateBalanceDisplay();
+    const balance = parseFloat(localStorage.getItem("balance")) || 0;
+    updateBalanceDisplay(balance);
 }
 
 initializeBalance();
