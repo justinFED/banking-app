@@ -91,7 +91,7 @@ function addContactToTable() {
         const newRow = table.insertRow(-1);
         const nameCell = newRow.insertCell(0);
         const emailCell = newRow.insertCell(1);
-        const balanceCell = newRow.insertCell(2);
+        const balanceCell = newRow.insertCell(2); // Add balance cell
         const deleteCell = newRow.insertCell(3);
 
         nameCell.innerHTML = name;
@@ -130,13 +130,14 @@ function loadContactsFromLocalStorage() {
         const newRow = tableBody.insertRow(-1);
         const nameCell = newRow.insertCell(0);
         const emailCell = newRow.insertCell(1);
-        const balanceCell = newRow.insertCell(2);
-        const deleteCell = newRow.insertCell(3);
+        const balanceCell = newRow.insertCell(2); // Add balance cell
+        const deleteCell = newRow.insertCell(3); // Adjust cell index
 
         nameCell.innerHTML = contact.name;
         emailCell.innerHTML = contact.email;
 
-        balanceCell.innerHTML = "$0"; 
+        // Populate the balance cell with a placeholder value (modify as needed)
+        balanceCell.innerHTML = "$0"; // Replace with actual balance data
 
         if (contact.hasDeleteButton) {
             const deleteButton = document.createElement("button");
