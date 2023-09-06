@@ -4,226 +4,250 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="../modals/userModal.css">
+    <link rel="stylesheet" href="/components/modals/userModal.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/570d026863.js" crossorigin="anonymous"></script>
-    <title>J&K Bank</title>
+    <title>J Bank</title>
 </head>
 <body>
  
-    <section id="menu">
-        <div class="logo">
-            <img src="avatar.png" alt="profile">
-            <h1>Welcome back!</h1>
-        </div>
-
-        <div class="items" id="items">
-            <a href="../transaction/transaction.html"><li>Transaction</li></a>
-            <li id="add-user">Add User</li>
-            <a href="../card/card.html"><li class="card">Create Virtual Card</li></a>
-            
-        </div>
-
-        <button class="logout-btn" onclick="logout()">Log Out</button>
- 
-        <div id="popup" class="popup">
-            <div class="popup-content">
-                <span class="close" id="close">&times;</span>
-                <h2>Add User</h2>
-                <form id="user-form">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="phone">Phone Number:</label>
-                    <input type="text" id="phone-input" name="phone">
-                    <label for="cash">Total Cash:</label>
-<input type="text" id="cash-input" name="cash" required>
-                    <button type="submit">Add</button>
-                </form>
-            </div>
-        </div> 
-
-    </section>
-
-
     <section id="interface">
         <div class="navigation">
             <div class="n1">
-                <div class="search">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search">
-                </div>
+                <h1>JBank</h1>
+            </div>
+
+            <div class="header-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
             </div>
 
             <div class="profile">
                 <i class="far fa-bell"></i>
-                <h1>Admin</h1>
+                <a href="/index.html">Logout</a>
             </div>
-        </div>
 
+        </div>
         <h3 class="i-name">
             Dashboard
         </h3>
 
-        <div class="values">
-            <div class="val-box">
-                <i class="fas fa-users"></i>
-                <div>
-                    <h3 id="totalUsers">0</h3>
-                    <span>Total Users</span>
+        <div class="container-balance">
+
+
+
+            <div class="side-box">
+
+                
+
+                <div class="balance-box">
+                    <h1>Available Balance</h1>
+                    <div class="balance">
+                        <h2 id="balanceAmount">$1000.00</h2>
+                    </div>
+                    <div class="card-name">
+                        <a href="/components/card/card.html" target="_blank"><p>Create Virtual Card</p></a>
+                    </div>
                 </div>
-            </div>
-            
+                
+                
 
-   
-            <div class="val-box">
-                <i class="fas fa-money-bill-wave"></i>
-                <div>
-                    <h3 id="totalCash">$0</h3>
-                    <span>Total Cash</span>
+                <div class="balance-items">
+
+                    <div class="balance-button">
+                        <button id="depositBtn">Deposit</button>
+                        <button id="withdrawBtn">Withdraw</button>
+                        <button id="transferBtn">Transfer</button>
+                    </div>
+
+                    <div class="user-transactions" id="user-transactions">
+                        <h1>Transactions</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transaction-history">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+             </div>
+
+             
+             <!-- Budget App -->
+
+            <div class="budget-box">
+                
+                <div class="wrapper">
+                    <h1>Budget Tracker</h1>
+                    <div class="container">
+                        
+                        <div class="sub-container">
+                           
+                            <div class="total-amount-container">
+                                <h3>Budget</h3>
+                                <p class="hide error" id="budget-error">Value cannot be empty or negative</p>
+                                <input type="number" id="total-amount" placeholder="Enter Total Amount">
+                                <button class="submit" id="total-amount-button">Set Budget</button>
+                                <button class="submit"  id="clear-all-button">Clear All</button>
+                            </div>
+
+                            <div class="user-amount-container">
+                                <h3>Expenses</h3>
+                                <p class="hide error" id="product-title-error">Value cannot be empty or negative</p>
+                                <input type="text" class="product-title" id="product-title" placeholder="Enter Title of Product">
+
+                                <input type="number" id="user-amount" placeholder="Enter Cost of Product">
+                                <button class="submit" id="check-amount">Check Amount</button>
+
+                            </div>
+                        </div>
+
+                        <!-- Output -->
+                        <div class="output-container flex-space">
+                            <div>
+                                <p>Total Budget</p>
+                                <span id="amount">0</span>
+                            </div>
+                            <div>
+                                <p>Expenses</p>
+                                <span id="expenditure-value">0</span>
+                            </div>
+                            <div>
+                                <p>Balance</p>
+                                <span id="balance-amount">0</span>
+                            </div>
+                        </div>
+
+                    </div>
 
 
-            <div class="val-box">
-                <i class="fas fa-users"></i>
-                <div>
-                    <h3>2,132</h3>
-                    <span>Total Withdraw</span>
+
+                    <!-- List -->
+                    <div class="list">
+                        <h3>Expense List</h3>
+                        <div class="list-container" id="list"></div>
+                    </div>
+
+
                 </div>
+
+            </div> <!-- End of Budget Box   -->
+
+
+            <!-- Contacts -->
+
+            <div class="contacts-box">
+                <div class="box">
+                <h1>Contacts</h1>
+                <i class="fas fa-user-plus clickable-icon" id="addContactIcon"></i>
             </div>
 
-            <div class="val-box">
-                <i class="fas fa-users"></i>
-                <div>
-                    <h3>2,142</h3>
-                    <span>Total Transfer</span>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="board">
-            <table width="100%">
+            <table id="contactsTable">
                 <thead>
                     <tr>
-                        <td>Name</td>
-                        <td>Email</td>
-                        <td>Phone Number</td>
-                        <td>Total Cash</td>
-                        <td></td>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Balance</th>
+                        <th>Action</th> 
                     </tr>
                 </thead>
-                
-                <tbody id="user-list">
+                <tbody id="contactsTableBody">
                     <tr>
-                        <td class="people">
-                            <div class="name" id="name">
-                                <h5></h5>
-                            </div>
-                        </td>
-                        <td class="email" id="email">
-                            <p></p>
-                        </td>
-                        <td class="phone" id="phone">
-                            <p></p>
-                        </td>
-
-                        <td class="cash" id="cash">
-                            <p></p>
-                        </td>
-                        <td class="edit"></td>
                     </tr>
                 </tbody>
             </table>
+
+            </div>
+
         </div>
+       
+
+
+        <div class="feature-header">
+            <h1>FEATURES</h1>
+        </div>
+    <div class="feature">
+        
+       
+        
+            <div class="container-feature">
+                
+                <a href="/user-side/features/forum/feature.html" target="_blank">
+                    <div class="feature-box">
+                        <h1>Community Forum</h1>
+                        <p>Offer region-specific financial tips and advice based on users' locations and economic conditions.</p>
+                        <img src="/user-side/features/forum/community.png" alt="">
+                    </div>
+                </a>
+
+
+                <a href="/user-side/features/score/score.html" target="_blank">
+                    <div class="feature-box">
+                    <h1>Financial Wellness Score</h1>
+                    <p>Develop a proprietary financial wellness score that assesses a user's overall financial health. Provide recommendations and resources to improve this score over time.</p>
+                            <img src="/user-side/features/score/score.png" alt="">
+                    </div>
+                 </a>
+
+
+                 <a href="/user-side/features/duedate/duedate.html" target="_blank">
+                    <div class="feature-box">
+                    <h1>Billing Due Date Reminder</h1>
+                    <p>Send notifications and reminders to users about upcoming bill due dates to avoid late payments and associated fees.</p>
+                    <img src="/user-side/features/duedate/duedate.png" alt="">
+                    </div>
+                </a>
+    
+    </div>
+
+    
+<!-- End of Main Content  -->
+
     </section>
 
-
-
-    <dialog id="user-options-modal">
-        <button id="user-options-close" class="close-btn">X</button>
-        <i class="fa-solid fa-money-bill-transfer fa-lg"></i>
-        <button class="user-options-btn" id="deposit-btn">Deposit</button>
-        <button class="user-options-btn" id="withdraw-btn">Withdraw</button>
-        <button class="user-options-btn" id="transfer-btn">Transfer</button>
-        <button class="user-options-btn" id="history-btn"><span style="color: #0070ba">Transactions</span></button>
-    </dialog>
-
-    <dialog id="deposit-modal">
-        <button id="deposit-close-btn" class="close-btn">X</button>
-        <input class="input" type="text" id="deposit-input" placeholder="">
-        <span class="dw-placeholder">Enter amount</span>
-        <button class="user-options-btn" id="deposit-confirm-btn">Confirm Deposit</button>
-    </dialog>
-
-    <dialog id="confirm-deposit-modal">
-        <p>You are about to deposit <span id="deposit-amount" style="font-weight: bold;"></span><br> to account <span id="deposit-email" style="font-weight: bold;"></span>.</p>
-        <p>Click YES if you're sure.</p>
-
-        <div id="yes-no">
-        <button class="yes-no-btn" id="yes-deposit">YES</button>
-        <button class="yes-no-btn" id="no-deposit">NO</button>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h1>JBank</h1>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-        
-    </dialog>
-
-    <dialog id="withdraw-modal">
-        <button id="withdraw-close-btn" class="close-btn">X</button>
-        <input class="input" type="text" id="withdraw-input" placeholder="">
-        <span class="dw-placeholder">Enter amount</span>
-        <button class="user-options-btn" id="withdraw-confirm-btn">Confirm Withdraw</button>
-    </dialog>
-
-    <dialog id="confirm-withdraw-modal">
-        <p>You are about to withdraw <span id="withdraw-amount" style="font-weight: bold;"></span><br> from account <span id="withdraw-email" style="font-weight: bold;"></span>.</p>
-        <p>Click YES if you're sure.</p>
-        
-        <div id="yes-no">
-        <button class="yes-no-btn" id="yes-withdraw">YES</button>
-        <button class="yes-no-btn" id="no-withdraw">NO</button>
+        <div class="footer-bottom">
+            &copy; 2023 JBank. All rights reserved.
         </div>
-    </dialog>
+    </footer>
 
-    <dialog id="transfer-modal">
-        <button id="transfer-close-btn" class="close-btn">X</button>
-        <div class="transfer-container">
-        <input class="input" type="text" id="transfer-recipient" placeholder="">
-        <span class="transfer-placeholder">Recipient's email</span>
-        </div>
-        <div class="transfer-container">
-        <input class="input" type="text" id="transfer-amount" placeholder="">
-        <span class="transfer-placeholder">Enter amount</span>
-        </div>
-        <button class="user-options-btn" id="transfer-confirm-btn">Confirm Transfer</button>
-    </dialog>
-
-    <dialog id="transfer-check-modal">
-        <p>You are about to transfer <span id="transfer-amount" style="font-weight: bold;"></span><br> from account <span id="transfer-email" style="font-weight: bold;"></span><br> to <span id="recipient-email" style="font-weight: bold;"></span>.</p>
-        <p>Click YES if you're sure.</p>
-        
-        <div id="yes-no">
-        <button class="yes-no-btn" id="yes-transfer">YES</button>
-        <button class="yes-no-btn" id="no-transfer">NO</button>
-        </div>
-    </dialog>
-
-    <dialog open id="history-modal">
-
-    </dialog>
 
 
 
  <script src="main.js"></script>
- <script src="../modals/userModal.js"></script>
- <script src="../modals/deposit.js"></script>
- <script src="../modals/withdraw.js"></script>
- <script src="../modals/transfer.js"></script>
 </body>
+
+
 </html>
