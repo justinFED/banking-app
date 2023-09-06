@@ -17,9 +17,7 @@ body {
     background: var(--white);
     position: relative;
     display: flex;
-    background: #f5f7fa;
     min-height: 100vh;
-   
     flex-direction: column;
 }
 

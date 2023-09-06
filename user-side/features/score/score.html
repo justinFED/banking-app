@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Wellness Score</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+
     <link rel="stylesheet" href="score.css">
 </head>
 <body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navigation">
+            <div class="n1">
+                <h1>JBank</h1>
+            </div>
+
+            <div class="header-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="profile">
+                <i class="far fa-bell"></i>
+                <a href="/index.html">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
     <div class="container">
+        <div class="box-container">
         <h1>Financial Wellness Score Calculator</h1>
         <div class="input-group">
             <label for="income">Income:</label>
@@ -27,6 +56,33 @@
             <p id="scoreResult">-</p>
         </div>
     </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h1>JBank</h1>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 JBank. All rights reserved.
+        </div>
+    </footer>
+
     <script src="score.js"></script>
 </body>
 </html>
